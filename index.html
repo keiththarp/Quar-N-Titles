@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Favorite Movies</title>
+  <title>Favorite Videogames</title>
   <style type="text/css">
     button,
     div,
@@ -43,7 +43,7 @@
       function displayVgInfo() {
 
         var vg = $(this).attr("data-name");
-        var queryURL = "https://api-v3.igdb.com/games/" + vg + "&apikey=552e4b9a68132310a3add75936cecf43";
+        var queryURL = "https://api-v3.igdb.com" + vg + "&apikey=552e4b9a68132310a3add75936cecf43";
 
         // Creating an AJAX call for the specific vg button being clicked
         $.ajax({
