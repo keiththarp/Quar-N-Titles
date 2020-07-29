@@ -19,14 +19,16 @@ var selectedMov = []
     var genre = response.Genre;
     var imageSrc = response.Poster;
     var rating = response.Rated;
-    var movObj ={}
+    var movObj ={movTitle:title, movGenre:genre, movRate:rating, movImgSrc:imageSrc}
 
 
     $("#title").html(title);
     $("#genre").html(genre);
     $("#image").html("<img src='" + imageSrc + "'>");
     $("#rating").html(rating);
-
+    selectedMov.push(movObj);
+    console.log(movObj);
+    console.log(selectedMov);
 
   });
 }
