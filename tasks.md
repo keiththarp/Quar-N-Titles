@@ -1,14 +1,21 @@
+7/29 TASKS
+
+
+
 Warren:
--video game API
+-Assess TV API 
+-Get API key
 
 AJ:
--book API
+-Get Book API Key
+-Create your own branch of repo
 
 Marc:
--movie API
+-Plug in js file to start debugging
 
 Keith:
--
-
+-Asses css framework options and make a call on what one to use
+(tailwind, pure, etc...)
 Kayla:
--
+-Assess css framework options and make call on what one to use
+(tailwind, pure, etc...)
