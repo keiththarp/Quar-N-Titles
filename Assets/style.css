@@ -1,0 +1,28 @@
+Keith---Front-End-2
+h1 {
+  margin: 0;
+  padding: 12px 20px;
+  font-size: 2em;
+  font-weight: bold;
+}
+
+i {
+  height: auto;
+  padding-bottom: 0px;
+  margin: 10px 8px;
+  padding: 5px;
+  border: 1px solid white;
+  border-radius: 4px;
+
+
+}
+
+div.hide-card {
+  display: none;
+}
+
+.main-container {
+  padding: 25px;
+  width: 800px;
+}
+
