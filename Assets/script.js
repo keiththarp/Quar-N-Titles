@@ -32,4 +32,21 @@ var selectedMov = []
 
   });
 }
+
+function renderList(){
+
+  for (i=0; i<selectedMov.length; i++){
+displaycard[i].title.html(selectedMov[i].movTitle);
+displaycard[i].rating.html(selectedMov[i].movRate);
+displaycard[i].genre.html(selectedMov[i].movGenre);
+displaycard[i].image.html("<img src='" + selectedMov[i].movTitle + "'>");
+displaycard[i].attr('data-num', i)
+
+  }
+}
+
+function renderMov(){
+
+
+}
 search();
