@@ -33,20 +33,25 @@ var selectedMov = []
   });
 }
 
-function renderList(){
-
-  for (i=0; i<selectedMov.length; i++){
-displaycard[i].title.html(selectedMov[i].movTitle);
-displaycard[i].rating.html(selectedMov[i].movRate);
-displaycard[i].genre.html(selectedMov[i].movGenre);
-displaycard[i].image.html("<img src='" + selectedMov[i].movTitle + "'>");
-displaycard[i].attr('data-num', i)
-
-  }
-}
-
 function renderMov(){
 
+  
+displaycard.title.html(selectedMov[i].movTitle);
+displaycard.rating.html(selectedMov[i].movRate);
+displaycard.genre.html(selectedMov[i].movGenre);
+displaycard.image.html("<img src='" + selectedMov[i].movTitle + "'>");
 
+
+  }
+
+
+function renderMov(){
+  for (i=0; i<selectedMov.length; i++){
+    var movBut = $("<button>")
+    movBut.html(selectedMov[i].movTitle);
+    movBut.attr('id', 'but' + i);
+    $("#buttonDiv").append(movBut);
+
+}
 }
 search();
