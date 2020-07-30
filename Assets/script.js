@@ -55,7 +55,7 @@ function renderMov() {
   for (i = 0; i < selectedMov.length; i++) {
     var movBut = $("<button>")
     movBut.html(selectedMov[i].movTitle);
-    movBut.attr('id', 'but' + i);
+    movBut.attr('data-index', i);
     $("#buttonDiv").append(movBut);
 
   }
