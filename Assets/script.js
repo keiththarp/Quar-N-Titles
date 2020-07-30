@@ -32,7 +32,11 @@ function search() {
         $("#image").html("<img src='" + imageSrc + "'>");
         $("#rating").html(rating);
         selectedMov.push(movObj);
+        localStorage.setItem('movies', movObj)
+        
         console.log(movObj);
+
+
         console.log(selectedMov);
 
       });
@@ -46,7 +50,7 @@ function renderMov() {
   displaycard.rating.html(selectedMov[i].movRate);
   displaycard.genre.html(selectedMov[i].movGenre);
   displaycard.image.html("<img src='" + selectedMov[i].movTitle + "'>");
-
+//can use THIS if onclick function//
 
 }
 
@@ -59,6 +63,26 @@ function renderMov() {
     $("#buttonDiv").append(movBut);
 
   }
+}
+
+
+function localLoad(){
+
+  //USE THIS AT ONLOAD TO CHECK FOR LOCAL STORAGE ITEMS
+
+var locLen= localStorage.movies.length; 
+
+if (locLen === 0) {return}
+else {
+{ for (i=0; i<locLen; i++) {
+
+var storObj = localStorage.getItem(movies[i]);
+selectedMov.push(storObj);
+}
+
+
+}
+}
 }
 search();
 
