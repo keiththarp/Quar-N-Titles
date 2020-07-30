@@ -50,6 +50,10 @@ function renderMov() {
   displaycard.rating.html(selectedMov[i].movRate);
   displaycard.genre.html(selectedMov[i].movGenre);
   displaycard.image.html("<img src='" + selectedMov[i].movTitle + "'>");
+  var favBut = $("<button>");
+  favBut.text("Favorite");
+  favBut.attr('click', setFavorite());
+
 //can use THIS if onclick function//
 
 }
@@ -84,6 +88,15 @@ selectedMov.push(storObj);
 }
 }
 }
+
+function setFavorite {
+
+  var favMovie = FAVORITE MOVIE OBJECT HERE;
+
+  localStorage.removeItem('movieFav');
+  localStorage.setItem('movieFav', favMovie);
+}
+
 search();
 
 
