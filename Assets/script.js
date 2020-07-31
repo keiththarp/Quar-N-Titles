@@ -1,3 +1,4 @@
+
 //const searchBar = document.getElementById("searchBar");
 //var searchVal = searchBar.val();
 var selectedMov = []
