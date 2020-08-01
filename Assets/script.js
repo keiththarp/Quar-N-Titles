@@ -1,3 +1,4 @@
+/* commenting out the entire file
 
 //const searchBar = document.getElementById("searchBar");
 //var searchVal = searchBar.val();
@@ -91,15 +92,15 @@ function localLoad() {
   }
 }
 
-function setFavorite {
+function setFavorite() {
 
   var favMovie = //FAVORITE MOVIE OBJECT HERE;
 
-  localStorage.removeItem('movieFav');
+    localStorage.removeItem('movieFav');
   localStorage.setItem('movieFav', favMovie);
 }
 
 search();
 
-
+*/
 
