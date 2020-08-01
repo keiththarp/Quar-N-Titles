@@ -16,16 +16,16 @@
 </head>
 
 <body>
-  <div class="mx-auto p-1">
-    <div class="main-container h-screen pt-2 max-w-md mx-auto rounded mb-8">
+  <div class="mx-auto">
+    <div class="main-container h-screen md:w-10/12 mx-auto rounded">
       <!-- Nav container -->
       <div class="flex flex-row header-row justify-end rounded-t-lg">
         <div class="text-left w-2/3 self-center px-2 m-0">
-          <h1>Quar'N'Titles</h1>
+          <h1 class="destination" data-destination="home-card">Quar'N'Titles</h1>
         </div>
-        <div class="text-center"><i class="fas fa-ticket-alt"></i></div>
-        <div class="text-center"><i class="fas fa-tv"></i></div>
-        <div class="text-center"><i class="fas fa-book"></i></div>
+        <div class="destination text-center" data-destination="movie-card"><i class="fas fa-ticket-alt"></i></div>
+        <div class="destination text-center" data-destination="tv-card"><i class="fas fa-tv"></i></div>
+        <div class="destination text-center" data-destination="book-card"><i class="fas fa-book"></i></div>
       </div>
 
       <div class="card-holder">
@@ -33,7 +33,7 @@
         <!-- ** ** Place all cards within card holder ** ** -->
 
         <!-- *** START Home Card *** -->
-        <div class="home-card">
+        <div class="all-cards" id="home-card">
           <div class="hero-holder">
             <img src="./Assets/movie-header.jpg" />
           </div>
@@ -45,20 +45,26 @@
               ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
               fugiat nulla pariatur.</p>
           </div>
-          <div class="butt-box px-3">
-            <div class="text-center mt-3 w-full home-butt rounded-lg flex flex-row items-center text-xl">
+          <div class="butt-box px-3 flex flex-wrap flex-row justify-between">
+            <!-- <div class="destination text-center mt-3 w-full home-butt rounded-lg flex flex-row items-center text-xl" data-destination="top-rated-card">
               <div class="w-1/4"></div><i class="fas fa-heart"></i> <span class="text-white font-bold pl-3"> Top
                 Rated</span>
-            </div>
-            <div class="text-center mt-3 w-full home-butt rounded-lg flex flex-row items-center text-xl">
+            </div> -->
+            <div
+              class="destination text-center mt-3 w-full md:w-1/4 home-butt rounded-lg flex flex-row items-center text-xl"
+              data-destination="movie-card">
               <div class="w-1/4"></div><i class="fas fa-ticket-alt"></i><span class="text-white font-bold pl-3">
                 Movies</span>
             </div>
-            <div class="text-center mt-3 w-full home-butt rounded-lg flex flex-row items-center text-xl">
+            <div
+              class="destination text-center mt-3 w-full md:w-1/4 home-butt rounded-lg flex flex-row items-center text-xl"
+              data-destination="tv-card">
               <div class="w-1/4"></div><i class="fas fa-tv"></i><span class="text-white font-bold pl-3"> T.V.
                 Shows</span>
             </div>
-            <div class="text-center mt-3 w-full home-butt rounded-lg flex flex-row items-center text-xl">
+            <div
+              class="destination text-center mt-3 w-full md:w-1/4 home-butt rounded-lg flex flex-row items-center text-xl"
+              data-destination="book-card">
               <div class="w-1/4"></div><i class="fas fa-book"></i><span class="text-white font-bold pl-3"> Books</span>
             </div>
           </div>
@@ -69,19 +75,19 @@
         <!--  -->
 
         <!-- *** START Movie Card *** -->
-
+        <div class="all-cards hide-card" id="movie-card">Test Movie</div>
         <!-- *** END Movie Card *** -->
 
         <!--  -->
 
         <!-- *** START Book Card *** -->
-
+        <div class="all-cards hide-card" id="book-card">Test Book</div>
         <!-- *** END Book Card *** -->
 
         <!--  -->
 
         <!-- *** START TV Card *** -->
-
+        <div class="all-cards hide-card" id="tv-card">Test TV</div>
         <!-- *** END TV Card *** -->
 
 
@@ -93,8 +99,9 @@
     <!-- All JavaScript links below here -->
     <!-- Compiled and minified JavaScript for Materialize -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="Assets/script.js"></script>
+    <script src="Assets/fe-script.js"></script>
 
 </body>
 
