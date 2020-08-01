@@ -28,7 +28,7 @@
       <br>
 
       <!-- Button triggers new movie to be added -->
-      <input id="add-movie" type="submit" value="Add a Movie, Yo!">
+      <input id="add-movie" type="submit" value="Add a TV Show">
     </form>
 
     <!-- Movies will Get Dumped Here -->
@@ -63,47 +63,65 @@ function displayMovieInfo() {
     method: "GET"
   }).then(function(response) {
     console.log(response);
-    // Creating a div to hold the movie
-    // var movieDiv = $("<div class='movie'>");
+    // Creating a div to hold the TV show
+    var tvDiv = $("<div class='tv'>");
+    //title
+    var title = response.results[0].original_name;
+    console.log(title)
 
-    // // Storing the rating data
-    // var rating = response.Rated;
+    // Creating an element to have the title displayed
+    var pZero = $("<p>").text("Title: " + title);
+
+    // Displaying the title
+    tvDiv.append(pZero);
+
+    //need to get genre list
+    var genre = response.results[0].genre_ids;
+
+    // Creating an element to have the genre displayed
+    var pOne = $("<p>").text("Genre(s): " + genre);
+
+    // Displaying the genre
+    tvDiv.append(pOne);
+
+    // Storing the rating data
+    var rating = response.results[0].vote_average;
 
     // // Creating an element to have the rating displayed
-    // var pOne = $("<p>").text("Rating: " + rating);
+    var pTwo = $("<p>").text("Rating: " + rating);
 
     // // Displaying the rating
-    // movieDiv.append(pOne);
+    tvDiv.append(pTwo);
 
-    // // Storing the release year
-    // var released = response.Released;
+    // Storing the release year
+    var air_date = response.results[0].first_air_date;
 
-    // // Creating an element to hold the release year
-    // var pTwo = $("<p>").text("Released: " + released);
+    // Creating an element to hold the release year
+    var pThree = $("<p>").text("Air Date: " + air_date);
 
-    // // Displaying the release year
-    // movieDiv.append(pTwo);
+    // Displaying the release year
+    tvDiv.append(pThree);
 
-    // // Storing the plot
-    // var plot = response.Plot;
+    // Storing the plot
+    var plot = response.results[0].overview;
 
-    // // Creating an element to hold the plot
-    // var pThree = $("<p>").text("Plot: " + plot);
+    // Creating an element to hold the plot
+    var pFour = $("<p>").text("Plot: " + plot);
 
-    // // Appending the plot
-    // movieDiv.append(pThree);
+    // Appending the plot
+    tvDiv.append(pFour);
 
-    // // Retrieving the URL for the image
-    // var imgURL = response.Poster;
+    // Retrieving the URL for the image
+    var imgURL = "https://image.tmdb.org/t/p/w200/" + response.results[0].poster_path;
 
-    // // Creating an element to hold the image
-    // var image = $("<img>").attr("src", imgURL);
+    // Creating an element to hold the image
+    var image = $("<img>").attr("src", imgURL);
 
-    // // Appending the image
-    // movieDiv.append(image);
+    // Appending the image
+    tvDiv.append(image);
 
-    // // Putting the entire movie above the previous movies
-    // $("#movies-view").prepend(movieDiv);
+    // Putting the entire movie above the previous movies
+    $("#movies-view").prepend(tvDiv);
   });
 
 }
@@ -140,6 +158,7 @@ $("#add-movie").on("click", function(event) {
 
   // Adding movie from the textbox to our array
   tvShows.push(tvShow);
+  console.log(tvShow);
 
   // Calling renderButtons which handles the processing of our movie array
   renderButtons();
