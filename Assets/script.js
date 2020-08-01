@@ -1,49 +1,48 @@
 
-//const searchBar = document.getElementById("searchBar");
-//var searchVal = searchBar.val();
 var selectedMov = []
-
+//var displaycard=
 
 function search() {
 
-  var movie = "fargo";
+  var movie = $("#searchBar").val();
   var queryURL = "https://www.omdbapi.com/?t=" + movie + "&apikey=trilogy";
 
 
-  for (i = 0; i < selectedMov.length; i++) {
-    if (movie === selectedMov[i].movTitle) { return }
-    else {
+
+  $.ajax({
+    url: queryURL,
+    method: "GET"
+  }).then(function (response) {
+
+    console.log(response);
+    var title = response.Title;
+    var genre = response.Genre;
+    var imageSrc = response.Poster;
+    var rating = response.Rated;
+    var movObj = { movTitle: title, movGenre: genre, movRate: rating, movImgSrc: imageSrc }
 
 
-      $.ajax({
-        url: queryURL,
-        method: "GET"
-      }).then(function (response) {
-
-        console.log(response);
-        var title = response.Title;
-        var genre = response.Genre;
-        var imageSrc = response.Poster;
-        var rating = response.Rated;
-        var movObj = { movTitle: title, movGenre: genre, movRate: rating, movImgSrc: imageSrc }
+    $("#title").html(title);
+    $("#genre").html(genre);
+    $("#image").html("<img src='" + imageSrc + "'>");
+    $("#rating").html(rating);
 
 
-        $("#title").html(title);
-        $("#genre").html(genre);
-        $("#image").html("<img src='" + imageSrc + "'>");
-        $("#rating").html(rating);
-        selectedMov.push(movObj);
-        localStorage.setItem('movies', movObj)
+    selectedMov.push(movObj);
 
-        console.log(movObj);
+    //if (localStorage.getItem)
+    localStorage.setItem('movies', JSON.stringify(selectedMov));
+
+    console.log(movObj);
 
 
-        console.log(selectedMov);
+    console.log(selectedMov);
+    console.log(localStorage.movies);
+     
 
-      });
-    }
-  }
-}
+  });
+};
+
 function renderMov() {
 
 
@@ -71,35 +70,14 @@ function renderMov() {
 }
 
 
-function localLoad() {
+function load() {
 
-  //USE THIS AT ONLOAD TO CHECK FOR LOCAL STORAGE ITEMS
-
-  var locLen = localStorage.movies.length;
-
-  if (locLen === 0) { return }
-  else {
-    {
-      for (i = 0; i < locLen; i++) {
-
-        var storObj = localStorage.getItem(movies[i]);
-        selectedMov.push(storObj);
-      }
-
-
-    }
-  }
+  if (localStorage.getItem("movies") == null) { return }
+  else { selectedMov = localStorage.getItem("movies"); }
+  console.log(selectedMov);
 }
 
-function setFavorite {
+console.log(localStorage.getItem('movies'));
 
-  var favMovie = //FAVORITE MOVIE OBJECT HERE;
-
-  localStorage.removeItem('movieFav');
-  localStorage.setItem('movieFav', favMovie);
-}
-
-search();
-
-
+load();
 
