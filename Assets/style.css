@@ -1,53 +1,56 @@
-/* possible color pallette 
-#01abe9
-#1b346c
-#f54b1a
-#e5c39e
-#c3ced0
+/* possible color pallette
+#01ABE9
+#1B346C
+#F54B1A
+#E5C39E
+#C3CED0
  */
-
  div.main-container {
-  background-color: #c3ced0;
-  border: solid 1px #1b346c;
+  background-color: #C3CED0;
+  /* border: solid 1px #1B346C; */
  }
-
 h1 {
   color: #fff;
   font-size: 1.7em;
   font-weight: bold;
 }
 h3 {
-  color: #1b346c;
+  color: #1B346C;
   font-weight: bold;
   font-size: 1.4em;
 }
-
 div.header-row {
-  background-color: #f54b1a;
+  background-color: #F54B1A;
   padding: 0px 5px;
 }
-
 i {
   width: 32px;
-  color: #1b346c;
+  color: #1B346C;
   height: auto;
   padding-bottom: 0px;
   margin: 10px 6px;
   padding: 5px;
   background-color: white;
-  border: 1px solid #c3ced0;
+  border: 1px solid #C3CED0;
   border-radius: 4px;
 }
-
 .butt-box i {
 width: 45px;
 }
-
 div.home-butt {
-  background-color: #f54b1a;
+  background-color: #F54B1A;
   padding: 5px 5px;
 }
-
 div.hide-card {
   display: none;
 }
+
+/* #search {
+  border: 2px solid #1b346c;
+  width: 300px;
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+} */
