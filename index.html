@@ -136,10 +136,10 @@ function renderButtons() {
 $("#add-movie").on("click", function(event) {
   event.preventDefault();
   // This line grabs the input from the textbox
-  var movie = $("#movie-input").val().trim();
+  var tvShow = $("#movie-input").val().trim();
 
   // Adding movie from the textbox to our array
-  tvShows.push();
+  tvShows.push(tvShow);
 
   // Calling renderButtons which handles the processing of our movie array
   renderButtons();
