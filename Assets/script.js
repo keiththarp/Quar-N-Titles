@@ -60,21 +60,23 @@ function renderMov() {
 
 
 function renderMov() {
-  for (i = 0; i < selectedMov.length; i++) {
+  //for (i = 0; i < selectedMov.length; i++) {
     var movBut = $("<button>")
-    movBut.html(selectedMov[i].movTitle);
-    movBut.attr('data-index', i);
+    movBut.html(selectedMov.movTitle);
+    //movBut.attr('data-index', i);
     $("#buttonDiv").append(movBut);
-
+console.log(selectedMov.movTitle)
   }
-}
+//}
 
 
 function load() {
 
   if (localStorage.getItem("movies") == null) { return }
-  else { selectedMov = localStorage.getItem("movies"); }
+  else { var tempMov = localStorage.getItem("movies"); 
+selectedMov = JSON.parse(tempMov);}
   console.log(selectedMov);
+  renderMov();
 }
 
 console.log(localStorage.getItem('movies'));
