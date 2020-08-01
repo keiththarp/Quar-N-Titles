@@ -37,12 +37,19 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
     </script>
     <script type="text/javascript">
+    // $.ajax({
+    //   url: "https://api.themoviedb.org/3/tv/900?api_key=0351780339b03ea3cf61554eb7f3d4cb",
+    //   method: "GET"
+    // }).then(function(response) {
+    //   console.log(response);
+    // });
     $.ajax({
-      url: "https://api.themoviedb.org/3/movie/200?api_key=0351780339b03ea3cf61554eb7f3d4cb",
+      url: "https://api.themoviedb.org/3/search/tv?api_key=0351780339b03ea3cf61554eb7f3d4cb&query=The+Simpsons",
       method: "GET"
     }).then(function(response) {
       console.log(response);
-    });</script>
+    });
+    </script>
    
 </body>
 
