@@ -35,15 +35,16 @@
         <!-- *** START Home Card *** -->
         <div class="all-cards" id="home-card">
           <div class="hero-holder">
-            <img src="./Assets/movie-header.jpg" />
+            <img src="./Assets/home-hero.jpg" />
           </div>
           <div class="intro-box p-3 bg-white">
+            <br />
             <h3 class="text-center pb-2">Track & Rank your Quar'N'Titles</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-              ex
-              ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-              fugiat nulla pariatur.</p>
+            <p class="intro">Let's face it, throughout this global pandemic, we've all had plenty of time on our hands
+              to finally watch the movies on our watch list, binge the latest Netflix, Amazon Prime, and Hulu shows, and
+              read some of the books on the best-sellers list. Keep track of all of the movies, tv shows, and books you
+              completed during quarantine so that the next time friends or family ask for a suggestion, you'll have your
+              lists to reference!</p>
           </div>
           <div class="butt-box px-3 flex flex-wrap flex-row justify-between">
             <!-- <div class="destination text-center mt-3 w-full home-butt rounded-lg flex flex-row items-center text-xl" data-destination="top-rated-card">
@@ -68,73 +69,156 @@
               <div class="w-1/4"></div><i class="fas fa-book"></i><span class="text-white font-bold pl-3"> Books</span>
             </div>
           </div>
-
+          <br />
+          <br />
+          <br />
         </div>
         <!-- *** END Home Card *** -->
 
         <!--  -->
 
         <!-- *** START Movie Card *** -->
-        <!-- <div id="movie-card">
-            <div class="hero-holder">
-              <img src="./Assets/movie-header.jpg" />
-            <div>Page Copy Here. Lorem ipsum dolor sit amet,
-                consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
-            <div id="search"><button><i class="fas fa-search"></i>Search</button></div>
-
-        <br />
-        <br />
-              <div class="w-full lg:max-w-full lg:flex">
-                <div
-                  class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
-                  style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-1.2.1&w=1000&q=80')">
-                </div>
-                <div
-                  class="bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
-                  <div class="mb-8">
-                    <div class="text-gray-900 font-bold text-xl mb-2">Movie Title #1</div>
-                    <p class="text-gray-700 text-base">Movie Rating & Review. Lorem ipsum dolor sit amet,
-                      consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                      aliquip ex ea commodo consequat.</p>
-                  </div>
-                </div>
+        <div class="all-cards hide-card" id="movie-card">
+          <div class="hero-holder">
+            <img src="./Assets/movie-hero.jpg" />
+            <br />
+            <h3>List of Quarantine Movies</h3>
+            <p class="intro">Keep track of all of the movies you watched during quarantine! That way if friends or
+              family ask you for a movie recommendation, you can quickly pull up your list of most recently watched
+              movies. Enter the title of the movie in the search bar to add it to a list below.</p>
+            <br />
+            <form>
+              <input type="text" placeholder="Search for a Title" name="search">
+              <button type="submit"><i class="fas fa-search"></i></button>
+            </form>
+          </div>
+          <br />
+          <br />
+          <div class="movie w-full lg:max-w-full lg:flex">
+            <div
+              class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
+              style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-1.2.1&w=1000&q=80')">
+            </div>
+            <div
+              class="description bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+              <div class="mb-8">
+                <div class="text-gray-900 font-bold text-xl mb-2">Movie Title</div>
+                <p class="text-gray-700 text-base">Movie Description (MVP). Personal Rating & Review (MVP+). Lorem ipsum
+                  dolor sit amet,
+                  consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                  aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                  aliquip ex ea commodo consequat.</p>
               </div>
-              </div>
+            </div>
+          </div>
+          <br />
+          <br />
         </div>
-        <br />
-        <br /> -->
-      
 
-      <!-- *** END Movie Card *** -->
+        <!-- *** END Movie Card *** -->
 
-      <!--  -->
+        <!--  -->
 
         <!-- *** START Book Card *** -->
-        <div class="all-cards hide-card" id="book-card">Test Book</div>
+        <div class="all-cards hide-card" id="book-card">
+          <div class="hero-holder">
+            <img src="./Assets/book-hero.jpg" />
+            <br />
+            <h3>List of Quarantine Books</h3>
+            <p class="intro">Keep track of all of the books you read during quarantine! That way if friends or
+              family ask you for a book recommendation, you can quickly pull up your list of most recently read
+              books. Enter the title of the book in the search bar to add it to a list below.</p>
+            <br />
+            <form>
+              <input type="text" placeholder="Search for a Title" name="search">
+              <button type="submit"><i class="fas fa-search"></i></button>
+            </form>
+          </div>
+          <br />
+          <br />
+          <div class="book w-full lg:max-w-full lg:flex">
+            <div
+              class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
+              style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-1.2.1&w=1000&q=80')">
+            </div>
+            <div
+              class="description bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+              <div class="mb-8">
+                <div class="text-gray-900 font-bold text-xl mb-2">Book Title</div>
+                <p class="text-gray-700 text-base">Book Description (MVP). Personal Rating & Review (MVP+). Lorem ipsum
+                  dolor sit amet,
+                  consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                  aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                  aliquip ex ea commodo consequat.</p>
+              </div>
+            </div>
+          </div>
+          <br />
+          <br />
+        </div>
+
         <!-- *** END Book Card *** -->
 
-      <!-- *** END Book Card *** -->
-
-      <!--  -->
+        <!--  -->
 
         <!-- *** START TV Card *** -->
-        <div class="all-cards hide-card" id="tv-card">Test TV</div>
+        <div class="all-cards hide-card" id="tv-card">
+          <div class="hero-holder">
+            <img src="./Assets/tv-hero.jpg" />
+            <br />
+            <h3>List of Quarantine TV Shows</h3>
+            <p class="intro">Keep track of all of the TV shows you watched during quarantine! That way if friends or
+              family ask you for a TV show recommendation, you can quickly pull up your list of most recently watched
+              shows. Enter the title of the show in the search bar to add it to a list below.</p>
+            <br />
+            <form>
+              <input type="text" placeholder="Search for a Title" name="search">
+              <button type="submit"><i class="fas fa-search"></i></button>
+            </form>
+          </div>
+          <br />
+          <br />
+          <div class="tv w-full lg:max-w-full lg:flex">
+            <div
+              class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
+              style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-1.2.1&w=1000&q=80')">
+            </div>
+            <div
+              class="description bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+              <div class="mb-8">
+                <div class="text-gray-900 font-bold text-xl mb-2">TV Show Title</div>
+                <p class="text-gray-700 text-base">TV Show Description (MVP). Personal Rating & Review (MVP+). Lorem
+                  ipsum
+                  dolor sit amet,
+                  consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                  aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                  aliquip ex ea commodo consequat.</p>
+              </div>
+            </div>
+          </div>
+          <br />
+          <br />
+        </div>
         <!-- *** END TV Card *** -->
+        <!-- ** ** All cards above here ** ** -->
+        <!-- **** Card Holder Bottom -->
+      </div>
 
-      <!-- *** END TV Card *** -->
+
+      <!-- **** Footer -->
+      <footer>
+        <div>
+          UNH Bootcamp - Group 6
+        </div>
+      </footer>
 
 
-
-      <!-- ** ** All cards above here ** ** -->
-      <!-- **** Card Holder Bottom -->
-    </div>
-    <!-- All JavaScript links below here -->
-    <!-- Compiled and minified JavaScript for Materialize -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="Assets/script.js"></script>
-    <script src="Assets/fe-script.js"></script>
+      <!-- All JavaScript links below here -->
+      <!-- Compiled and minified JavaScript for Materialize -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <!-- <script src="Assets/script.js"></script> -->
+      <script src="Assets/fe-script.js"></script>
 
 </body>
 
