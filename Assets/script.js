@@ -43,6 +43,7 @@ function search() {
   
         console.log(selectedMov);
         console.log(localStorage.movies);
+        renderList();
       });
 $("#image").append(selBut);
     }
@@ -77,6 +78,7 @@ function renderMov() {
 
 
 function renderList() {
+  $("#buttonDiv").html("");
   for (i = 0; i < selectedMov.length; i++) {
     var movBut = $("<button>");
     movBut.text(selectedMov[i].movTitle);
