@@ -64,16 +64,6 @@ function exist(){
 function renderMov() {
 
 
-  $("#title").html(selectedMov[i].movTitle);
-  $("#rating").html(selectedMov[i].movRate);
-  $("#genre").html(selectedMov[i].movGenre);
-  $("#image").html("<img src='" + selectedMov[i].movTitle + "'>");
-  //var favBut = $("<button>");
-  //favBut.text("Favorite");
-  //favBut.on('click', setFavorite());
-
-  //can use THIS if onclick function//
-
 }
 
 
@@ -83,7 +73,16 @@ function renderList() {
     var movBut = $("<button>");
     movBut.text(selectedMov[i].movTitle);
     movBut.attr('data-index', i);
-    movBut.on("click", function () { renderMov() });
+    movBut.attr('value', selectedMov[i]);
+    movBut.on("click", function () { 
+      var index=this.dataset.index; 
+
+      $("#title").html(selectedMov[index].movTitle);
+      $("#rating").html(selectedMov[index].movRate);
+      $("#genre").html(selectedMov[index].movGenre);
+      $("#image").html("<img src='" + selectedMov[index].movImgSrc+ "'>");
+
+    });
     $("#buttonDiv").append(movBut);
 
   }
