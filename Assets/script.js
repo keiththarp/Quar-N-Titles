@@ -13,6 +13,9 @@ function search() {
     method: "GET"
   }).then(function (response) {
 
+    if(response.Response==="False"){alert("No results found"); return}
+    else{
+
     console.log(response);
     var title = response.Title;
     var genre = response.Genre;
@@ -35,7 +38,7 @@ function search() {
   
         selectedMov.push(movObj);
   
-        //if (localStorage.getItem)
+        
         localStorage.setItem('movies', JSON.stringify(selectedMov));
   
         console.log(movObj);
@@ -48,7 +51,7 @@ function search() {
 $("#image").append(selBut);
     }
 
-var exist = exist();
+
 function exist(){
     for (i = 0; i < selectedMov.length; i++) {
       if (title===selectedMov[i].movTitle) {return true}
@@ -57,14 +60,11 @@ function exist(){
   }
   if (exist === true) {return}
   else {addBut()}
-
+    }
   });
 };
 
-function renderMov() {
 
-
-}
 
 
 function renderList() {
