@@ -45,6 +45,27 @@ div.hide-card {
   display: none;
 }
 
+div.modal-box {
+  display: block;
+  position: fixed;
+  z-index: 99;
+  left: 0;
+  top: 0;
+  
+}
+
+div.img-holder {
+  width: 75px;
+  height: 75px;
+  
+}
+
+img.title-img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
 /* #search {
   border: 2px solid #1b346c;
   width: 300px;

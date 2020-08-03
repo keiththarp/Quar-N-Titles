@@ -11,6 +11,7 @@
   <!-- CDN for FontAwesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
     integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
   <link rel="stylesheet" href="./Assets/style.css">
   <title>Quarantine Accomplishments</title>
 </head>
@@ -33,7 +34,7 @@
         <!-- ** ** Place all cards within card holder ** ** -->
 
         <!-- *** START Home Card *** -->
-        <div class="all-cards" id="home-card">
+        <div class="all-cards hide-card" id="home-card">
           <div class="hero-holder">
             <img src="./Assets/movie-header.jpg" />
           </div>
@@ -104,37 +105,65 @@
         </div>
         <br />
         <br /> -->
-      
 
-      <!-- *** END Movie Card *** -->
 
-      <!--  -->
+        <!-- *** END Movie Card *** -->
+
+        <!--  -->
 
         <!-- *** START Book Card *** -->
         <div class="all-cards hide-card" id="book-card">Test Book</div>
         <!-- *** END Book Card *** -->
 
-      <!-- *** END Book Card *** -->
+        <!-- *** END Book Card *** -->
 
-      <!--  -->
+        <!--  -->
 
         <!-- *** START TV Card *** -->
-        <div class="all-cards hide-card" id="tv-card">Test TV</div>
+        <!-- <div class="all-cards hide-card" id="tv-card">Test TV</div> -->
         <!-- *** END TV Card *** -->
 
-      <!-- *** END TV Card *** -->
+        <!-- ***** TEST CARD ***** -->
+        <!-- *** START TV Card *** -->
+        <div class="all-cards" id="tv-card">
+          <div class="title-box text-center mt-3 rounded-lg flex flex-row items-center mx-2 p-2 bg-gray-600">
+            <div class="img-holder flex-col"><img class="title-img"
+                src="https://m.media-amazon.com/images/M/MV5BNDJiZDgyZjctYmRjMS00ZjdkLTkwMTEtNGU1NDg3NDQ0Yzk1XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg"
+                alt="fargo" /> </div>
+            <div class="title-details flex-col ml-3">
+              <h3 class="title-title">Fargo</h3>
+              <p class="title-plot">Jerry Lundegaard's inept crime falls apart due to his and his henchmen's bungling
+                and the persistent police work of the quite pregnant Marge Gunderson.</p>
 
+            </div>
+          </div>
+        </div>
+        <!-- *** END TV Card *** -->
+        <!-- ***** END TEST CARD ***** -->
 
+        <!--  -->
+        <!-- START Modal Card -->
+        <div class="modal-card hide-card" id="modal-card">
+          <div class="modal-box w-full bg-gray-200 bg-opacity-50 h-full mx-auto flex flex-row justify-center">
+            <div class="w-11/12 h-full bg-white border-solid border-2 border-gray-600 mx-auto mt-4 rounded">
 
-      <!-- ** ** All cards above here ** ** -->
-      <!-- **** Card Holder Bottom -->
-    </div>
-    <!-- All JavaScript links below here -->
-    <!-- Compiled and minified JavaScript for Materialize -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="Assets/script.js"></script>
-    <script src="Assets/fe-script.js"></script>
+            </div>
+
+          </div>
+
+        </div>
+        <!-- END Modal Card -->
+        <!--  -->
+
+        <!-- ** ** All cards above here ** ** -->
+        <!-- **** Card Holder Bottom -->
+      </div>
+      <!-- All JavaScript links below here -->
+      <!-- Compiled and minified JavaScript for Materialize -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="Assets/script.js"></script>
+      <script src="Assets/fe-script.js"></script>
 
 </body>
 
