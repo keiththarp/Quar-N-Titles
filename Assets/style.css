@@ -24,6 +24,9 @@ div.header-row {
   background-color: #F54B1A;
   padding: 0px 5px;
 }
+.destination {
+  cursor: pointer;
+}
 i {
   width: 32px;
   color: #1B346C;
