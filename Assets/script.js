@@ -75,12 +75,24 @@ function renderList() {
     movBut.attr('data-index', i);
     movBut.attr('value', selectedMov[i]);
     movBut.on("click", function () { 
-      var index=this.dataset.index; 
+      var Index=this.dataset.index; 
+      
+      $("#title").html(selectedMov[Index].movTitle);
+      $("#rating").html(selectedMov[Index].movRate);
+      $("#genre").html(selectedMov[Index].movGenre);
+      $("#image").html("<img src='" + selectedMov[Index].movImgSrc+ "'>");
+      var removeBut = $("<button>");
+      removeBut.text("Remove");
+      removeBut.on("click", function(){
+var thisMov=localStorage.getItem("movies");
+var movArray=JSON.parse(thisMov);
+movArray.splice(Index, 1);
+localStorage.setItem("movies", JSON.stringify( movArray));
+selectedMov.splice(Index,1);
+       load();
 
-      $("#title").html(selectedMov[index].movTitle);
-      $("#rating").html(selectedMov[index].movRate);
-      $("#genre").html(selectedMov[index].movGenre);
-      $("#image").html("<img src='" + selectedMov[index].movImgSrc+ "'>");
+      })
+      $("#image").append(removeBut);
 
     });
     $("#buttonDiv").append(movBut);
