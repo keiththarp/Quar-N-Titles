@@ -49,7 +49,86 @@
     // }).then(function(response) {
     //   console.log(response);
     // });
-    var tvShows = [];
+  var tvShows = [];
+  var genreArray = [
+      {
+        id: 10759,
+        genre: "Action & Adventure"
+      }, 
+      {
+        id: 16,
+        genre: "Animation"
+      }, 
+      {
+        id: 35,
+        genre: "Comedy"
+      }, 
+      {
+        id: 80,
+        genre: "Crime"
+      },
+      { 
+        id: 99,
+        genre: "Documentary"
+      },
+      {
+        id: 18,
+        genre:  "Drama"
+      },
+      {
+        id: 10751,
+        genre: "Family"
+      }, 
+      {
+        id: 10762,
+        genre: "Kids"
+      },
+      {
+        id: 9648,
+        genre: "Mystery"
+      }, 
+      {
+        id: 10763,
+        genre: "News"
+      }, 
+      {
+        id: 10764,
+        genre: "Reality"
+      },
+      {
+        id: 10765,
+        genre:  "Science & Fantasy"
+      }, 
+      {
+        id: 10766,
+        genre: "Soap"
+      },
+      {
+        id: 10767,
+        genre:  "Talk"
+      }, 
+      {
+        id: 10768,
+        genre: "War & Politics"
+      }, 
+      {
+        id: 37,
+        genre: "Western"
+      }
+  ]
+
+    function convertGenre(x)
+    {
+      if (genreArray[0].id == x)
+      {
+        console.log(genreArray[0].genre)
+      }
+      else
+      {
+        console.log("no")
+      }
+    }
+    convertGenre(10)
 
 // displayMovieInfo function re-renders the HTML to display the appropriate content
 function displayMovieInfo() {
@@ -76,13 +155,82 @@ function displayMovieInfo() {
     tvDiv.append(pZero);
 
     //need to get genre list
-    var genre = response.results[0].genre_ids;
+    var genre_number = response.results[0].genre_ids;
 
-    // Creating an element to have the genre displayed
-    var pOne = $("<p>").text("Genre(s): " + genre);
+    //convert genre_numer to genre
+    var genreArray = [
+      {
+        id: 10759,
+        genre: "Action & Adventure"
+      }, 
+      {
+        id: 16,
+        genre: "Animation"
+      }, 
+      {
+        id: 35,
+        genre: "Comedy"
+      }, 
+      {
+        id: 80,
+        genre: "Crime"
+      },
+      { 
+        id: 99,
+        genre: "Documentary"
+      },
+      {
+        id: 18,
+        genre:  "Drama"
+      },
+      {
+        id: 10751,
+        genre: "Family"
+      }, 
+      {
+        id: 10762,
+        genre: "Kids"
+      },
+      {
+        id: 9648,
+        genre: "Mystery"
+      }, 
+      {
+        id: 10763,
+        genre: "News"
+      }, 
+      {
+        id: 10764,
+        genre: "Reality"
+      },
+      {
+        id: 10765,
+        genre:  "Science & Fantasy"
+      }, 
+      {
+        id: 10766,
+        genre: "Soap"
+      },
+      {
+        id: 10767,
+        genre:  "Talk"
+      }, 
+      {
+        id: 10768,
+        genre: "War & Politics"
+      }, 
+      {
+        id: 37,
+        genre: "Western"
+      }
+  ]
 
-    // Displaying the genre
-    tvDiv.append(pOne);
+
+    // // Creating an element to have the genre displayed
+    // var pOne = $("<p>").text("Genre(s): " + genre);
+
+    // // Displaying the genre
+    // tvDiv.append(pOne);
 
     // Storing the rating data
     var rating = response.results[0].vote_average;
