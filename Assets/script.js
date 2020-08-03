@@ -1,4 +1,3 @@
-
 var selectedMov = []
 //var displaycard=
 
@@ -46,37 +45,38 @@ function search() {
 function renderMov() {
 
 
-  displaycard.title.html(selectedMov[i].movTitle);
-  displaycard.rating.html(selectedMov[i].movRate);
-  displaycard.genre.html(selectedMov[i].movGenre);
-  displaycard.image.html("<img src='" + selectedMov[i].movTitle + "'>");
-  var favBut = $("<button>");
-  favBut.text("Favorite");
-  favBut.attr('click', setFavorite());
+ $("#title").html(selectedMov[i].movTitle);
+  $("#rating").html(selectedMov[i].movRate);
+  $("#genre").html(selectedMov[i].movGenre);
+  $("#image").html("<img src='" + selectedMov[i].movTitle + "'>");
+  //var favBut = $("<button>");
+  //favBut.text("Favorite");
+  //favBut.on('click', setFavorite());
 
   //can use THIS if onclick function//
 
 }
 
 
-function renderMov() {
-  //for (i = 0; i < selectedMov.length; i++) {
-    var movBut = $("<button>")
-    movBut.html(selectedMov.movTitle);
-    //movBut.attr('data-index', i);
+function renderList() {
+  for (i = 0; i < selectedMov.length; i++) {
+    var movBut = $("<button>");
+    movBut.text(selectedMov[i].movTitle);
+    movBut.attr('data-index', i);
+    movBut.on("click", function(){renderMov()});
     $("#buttonDiv").append(movBut);
-console.log(selectedMov.movTitle)
+
   }
-//}
+}
 
 
 function load() {
 
-  if (localStorage.getItem("movies") == null) { return }
+  if (localStorage.getItem("movies") === null) { return }
   else { var tempMov = localStorage.getItem("movies"); 
-selectedMov = JSON.parse(tempMov);}
+selectedMov=JSON.parse(tempMov);}
   console.log(selectedMov);
-  renderMov();
+  renderList();
 }
 
 console.log(localStorage.getItem('movies'));
