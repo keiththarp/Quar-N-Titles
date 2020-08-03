@@ -50,9 +50,6 @@ $(document).ready(function () {
     // Movie API call function
     movieAPI: function (searchTerm) {
 
-      // Making the template clone and positioning it in the DOM
-      thisHolder = movieHolder.prepend(titleBox.contents().clone());
-
       // Building the API query URL
       const queryURL = `https://www.omdbapi.com/?t=${searchTerm}&apikey=trilogy`;
 
@@ -67,13 +64,17 @@ $(document).ready(function () {
         const plot = result.Plot;
         const reviews = result.Ratings[0].Value;
 
-        // Placing the Values in the template
+        // Cloning the template
+        const thisHolder = titleBox.contents().clone().attr("id", searchTerm); // Adding id = to the search term
+        // Placing the Values in the new element
         thisHolder.find(".title-img").css("background-image", "url(" + imgSrc + ")");
         thisHolder.find(".title-title").text(title);
         thisHolder.find(".title-genre").text(genre);
         thisHolder.find(".title-rating").text(rating);
         thisHolder.find(".title-review").text(reviews);
-        thisHolder.find(".title-plot").text(plot);
+        thisHolder.find(".title-plot").text(plot);// This is set to only display on >= medium screens
+        // Positioning it in the DOM
+        movieHolder.prepend(thisHolder);
       })
     },
 
