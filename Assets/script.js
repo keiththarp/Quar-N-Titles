@@ -89,6 +89,7 @@ var movArray=JSON.parse(thisMov);
 movArray.splice(Index, 1);
 localStorage.setItem("movies", JSON.stringify( movArray));
 selectedMov.splice(Index,1);
+        clear();
        load();
 
       })
@@ -110,6 +111,13 @@ function load() {
   }
   console.log(selectedMov);
   renderList();
+}
+
+function clear(){
+  $("#title").html("");
+  $("#rating").html("");
+  $("#genre").html("");
+  $("#image").html("");
 }
 
 console.log(localStorage.getItem('movies'));
