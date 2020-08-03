@@ -6,6 +6,7 @@
 #C3CED0
  */
  div.main-container {
+   color: gray;
   /* background-color: #c3ced0; */
   /* border: solid 1px #1b346c; */
  }
@@ -31,7 +32,7 @@ i {
   margin: 10px 6px;
   padding: 5px;
   background-color: white;
-  border: 1px solid #C3CED0;
+  /* border: 1px solid #C3CED0; */
   border-radius: 4px;
 }
 .butt-box i {
@@ -45,6 +46,7 @@ div.hide-card {
   display: none;
 }
 
+<<<<<<< HEAD
 div.modal-box {
   display: block;
   position: fixed;
@@ -67,11 +69,45 @@ img.title-img {
 }
 
 /* #search {
-  border: 2px solid #1b346c;
-  width: 300px;
-  border-radius: 25px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+=======
+
+
+/* Kayla's Edits */
+.intro {
+  padding: 25px;
   text-align: center;
-} */
+}
+
+
+.movie, .book, .tv {
+  padding: 20px 0px 20px 0px; 
+}
+
+.description {
+  background-color: #eeeeee;
+}
+
+
+.hero-holder {
+  text-align: center;
+}
+
+form input {
+>>>>>>> 351c6efbf15ba51db2f38f85e55161a37abb344f
+  border: 2px solid #1b346c;
+  width: 250px;
+  border-radius: 25px;
+  padding: 5px;
+  text-align: center;
+}
+
+form button {
+  padding: 0px;
+}
+
+footer {
+  background-color: #F54B1A;
+  color: white; 
+  text-align: center;
+  padding: 20px;
+}
