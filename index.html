@@ -145,6 +145,7 @@
             }
           ]
           function handle_newGenre(genreNumbers) {
+            var pOne = $("<p>").text("Genre(s): ");
             genreNumbers.forEach(number => {
               const foundObj = genreArray.find(function (genreObj) {
                 return genreObj.id === number;
@@ -152,7 +153,7 @@
               // Creating an element to have the genre displayed
               if (foundObj)
               {
-              var pOne = $("<p>").text("Genre(s): " + foundObj.genre);
+              pOne.append($("<span>").text(`${foundObj.genre}, `))
               // Displaying the genre
               tvDiv.append(pOne);
               }
