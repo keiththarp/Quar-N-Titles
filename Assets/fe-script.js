@@ -56,7 +56,7 @@ $(document).ready(function () {
   };
 
   function buildMovieCards(storedMovies) {
-
+let i=0;
     storedMovies.forEach(function (index) {
       const thisHolder = titleBox.contents().clone().attr("id", index.movTitle);
       thisHolder.find(".title-img").css("background-image", "url(" + index.movImgSrc + ")");
@@ -68,23 +68,33 @@ $(document).ready(function () {
       thisHolder.find(".memory-buttons").attr("data-memory", index.movTitle);
 
       movieHolder.prepend(thisHolder);
+      i++;
     });
 
+    
     const addButt = $(".add-butt");
     const subButt = $(".sub-butt");
+const clickListener = $(".individual-title");
 
-    addButt.on("click", function (event) {
-      alert("This title already exists");
-    });
-
-    subButt.on("click", function () {
+    clickListener.on("click", function (event) {
+      let thisIndex = ($(this).attr("data-index"));
+      const thisClick = $(event.target);
+      if(thisClick.hasClass("add-butt")) {
+        alert("This title already exists");
+      } else if (thisClick.hasClass("sub-butt")) {
+        console.log(thisIndex);
+        storedMovies.splice(thisIndex, 1);
+        localStorage.setItem('movies', JSON.stringify(storedMovies));
+        buildMovieCards(storedMovies);
+      }
+      return;
 
     })
 
   };
 
   function buildBookCards(storedBooks) {
-
+let i=0;
     storedBooks.forEach(function (index) {
       const thisHolder = titleBox.contents().clone().attr("id", index.title);
       thisHolder.find(".title-img").css("background-image", "url(" + index.imgBk + ")");
@@ -96,23 +106,32 @@ $(document).ready(function () {
       thisHolder.find(".memory-buttons").attr("data-memory", index.title);
 
       bookHolder.prepend(thisHolder);
+      i++;
     });
 
     const addButt = $(".add-butt");
     const subButt = $(".sub-butt");
+    const clickListener = $(".individual-title");
 
-    addButt.on("click", function (event) {
-      alert("This title already exists");
-    });
-
-    subButt.on("click", function () {
+    clickListener.on("click", function (event) {
+      let thisIndex = ($(this).attr("data-index"));
+      const thisClick = $(event.target);
+      if(thisClick.hasClass("add-butt")) {
+        alert("This title already exists");
+      } else if (thisClick.hasClass("sub-butt")) {
+        console.log(thisIndex);
+        storedMovies.splice(thisIndex, 1);
+        localStorage.setItem('movies', JSON.stringify(storedMovies));
+        buildMovieCards(storedMovies);
+      }
+      return;
 
     })
 
   };
 
   function buildTVCards(storedTV) {
-
+let i=0;
     storedTV.forEach(function (index) {
       const thisHolder = titleBox.contents().clone().attr("id", index.tvTitle);
       thisHolder.find(".title-img").css("background-image", "url(" + index.tvImg + ")");
@@ -124,16 +143,26 @@ $(document).ready(function () {
       thisHolder.find(".memory-buttons").attr("data-memory", index.tvTitle);
 
       tvHolder.prepend(thisHolder);
+      i++
     });
 
     const addButt = $(".add-butt");
     const subButt = $(".sub-butt");
 
-    addButt.on("click", function (event) {
-      alert("This title already exists");
-    });
+    const clickListener = $(".individual-title");
 
-    subButt.on("click", function () {
+    clickListener.on("click", function (event) {
+      let thisIndex = ($(this).attr("data-index"));
+      const thisClick = $(event.target);
+      if(thisClick.hasClass("add-butt")) {
+        alert("This title already exists");
+      } else if (thisClick.hasClass("sub-butt")) {
+        console.log(thisIndex);
+        storedMovies.splice(thisIndex, 1);
+        localStorage.setItem('movies', JSON.stringify(storedMovies));
+        buildMovieCards(storedMovies);
+      }
+      return;
 
     })
 
