@@ -44,12 +44,7 @@ $(document).ready(function () {
 
 
       // Placing the Values in the template
-      thisHolder.find(".title-img").css("background-image", "url(" + imgSrc + ")");
-      thisHolder.find(".title-title").text(title);
-      thisHolder.find(".title-genre").text(genre);
-      thisHolder.find(".title-rating").text(rating);
-      thisHolder.find(".title-review").text(reviews);
-      thisHolder.find(".title-plot").text(plot);
+
       var selectedMov = []
 
 
@@ -76,12 +71,13 @@ $(document).ready(function () {
           var movObj = { movPlot: plot, movReviews: reviews, movTitle: title, movGenre: genre, movRate: rating, movImgSrc: imgSrc }
 
 
-          thisHolder.find(".title-img").css("background-image", "url(" + imgSrc + ")");
-          thisHolder.find(".title-title").text(title);
-          thisHolder.find(".title-genre").text(genre);
+
+
           thisHolder.find(".title-rating").text(rating);
-          thisHolder.find(".title-review").text(reviews);
+          thisHolder.find(".title-title").text(title);
           thisHolder.find(".title-plot").text(plot);
+          thisHolder.find(".title-img").css("background-image", "url(" + imgSrc + ")");
+          thisHolder.find(".title-review").text(reviews)
 
           function addBut() {
             var selBut = $("<button>");
@@ -166,11 +162,11 @@ $(document).ready(function () {
 
       function clear() {
         thisHolder.find(".title-img").html("");
-        thisHolder.find(".title-title").text("");
-        thisHolder.find(".title-genre").text("");
-        thisHolder.find(".title-rating").text("");
-        thisHolder.find(".title-review").text("");
-        thisHolder.find(".title-plot").text("");
+        thisHolder.find(".title-title").html("");
+        thisHolder.find(".title-genre").html("");
+        thisHolder.find(".title-rating").html("");
+        thisHolder.find(".title-review").html("");
+        thisHolder.find(".title-plot").html("");
 
       }
 
@@ -199,6 +195,10 @@ $(document).ready(function () {
 
       var queryURL = `https://api.themoviedb.org/3/search/tv?api_key=0351780339b03ea3cf61554eb7f3d4cb&query=${searchTerm}`;
 
+
+ 
+
+
       $.ajax({
         url: queryURL,
         method: "GET"
@@ -214,8 +214,12 @@ $(document).ready(function () {
           var reviews = response.results[0].popularity;
           var rating = response.results[0].vote_average;
           var plot = response.results[0].overview;
-
-
+          var tvObj = {tvTitle:title, tvGenre:genreNumbers, tvReviews:reviews, tvRating:rating, tvPlot:plot, tvImg:imgURL}
+          thisHolder.find(".title-rating").text(rating);
+          thisHolder.find(".title-title").text(title);
+          thisHolder.find(".title-plot").text(plot);
+          thisHolder.find(".title-img").css("background-image", "url(" + imgURL + ")");
+          thisHolder.find(".title-review").text(reviews)
 
 
           //convert genre_numer to genre
@@ -306,23 +310,103 @@ $(document).ready(function () {
 
           handle_newGenre(genreNumbers)
 
-          thisHolder.find(".title-rating").text(rating);
-          thisHolder.find(".title-title").text(title);
-          thisHolder.find(".title-plot").text(plot);
-          thisHolder.find(".title-img").css("background-image", "url(" + imgURL + ")");
-          thisHolder.find(".title-review").text(reviews)
+
+          function addBut() {
+            var selBut = $("<button>");
+            selBut.text("Add");
+            selBut.on("click", function () {
 
 
+              tvShows.push(tvObj);
 
 
+              localStorage.setItem('tvshows', JSON.stringify(tvShows));
+
+
+              renderList();
+            });
+            $("#newDiv").append(selBut);
+          }
+
+          function exist() {
+            for (i = 0; i < tvShows.length; i++) {
+              if (title === tvShows[i].tvTitle) { return true }
+
+            }
+          }
+          if (exist === true) { return }
+          else { addBut() }
 
 
 
         }
-      });
+});
+        function load() {
+
+          if (localStorage.getItem("tvshows") === null) { return }
+          else {
+            var tempTV = localStorage.getItem("tvshows");
+            tvShows = JSON.parse(tempTV);
+          }
+          renderList();
+        }
+        function clear() {
+          thisHolder.find(".title-img").html("");
+          thisHolder.find(".title-title").text("");
+          thisHolder.find(".title-genre").text("");
+          thisHolder.find(".title-rating").text("");
+          thisHolder.find(".title-review").text("");
+          thisHolder.find(".title-plot").text("");
+  
+        }
+      
+
+      function renderList() {
+        $("#newDiv").html("");
+        for (i = 0; i < tvShows.length; i++) {
+          var tvBut = $("<button>");
+          tvBut.text(tvShows[i].tvTitle);
+          tvBut.attr('data-index', i);
+          tvBut.attr('value', tvShows[i]);
+          tvBut.on("click", function () {
+            var Index = this.dataset.index;
 
 
+            thisHolder.find(".title-img").css("background-image", "url(" + tvShows[Index].tvImg + ")");
+            thisHolder.find(".title-title").text(tvShows[Index].tvTitle);
+            thisHolder.find(".title-genre").text(tvShows[Index].tvGenre);
+            thisHolder.find(".title-rating").text(tvShows[Index].tvRate);
+            thisHolder.find(".title-review").text(tvShows[Index].tvReviews);
+            thisHolder.find(".title-plot").text(tvShows[Index].tvPlot);
+            var removeBut = $("<button>");
+            removeBut.text("Remove");
+            removeBut.on("click", function () {
+              var thisTV = localStorage.getItem("tvshows");
+              var tvArray = JSON.parse(thisTV);
+              tvArray.splice(Index, 1);
+              localStorage.setItem("tvshows", JSON.stringify(tvArray));
+              tvShows.splice(Index, 1);
+              clear();
+              load();
 
+            })
+            $("#newDiv").append(removeBut);
+
+          });
+          $("#newDiv").append(tvBut);
+
+        }
+      }
+      function clear() {
+        thisHolder.find(".title-img").html("");
+        thisHolder.find(".title-title").html("");
+        thisHolder.find(".title-genre").html("");
+        thisHolder.find(".title-rating").html("");
+        thisHolder.find(".title-review").html("");
+        thisHolder.find(".title-plot").html("");
+
+      }
+load();
 
     },
 
