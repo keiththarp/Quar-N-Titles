@@ -191,6 +191,210 @@ load();
     tvAPI: function (searchTerm) {
       thisHolder = tvHolder.prepend(titleBox.contents().clone());
       console.log(`${searchTerm} is the T.V. show`);
+
+      var tvShows = [];
+      // displayMovieInfo function re-renders the HTML to display the appropriate content
+      
+
+
+        var queryURL = `https://api.themoviedb.org/3/search/tv?api_key=0351780339b03ea3cf61554eb7f3d4cb&query=${searchTerm}`;
+
+        // Creating an AJAX call for the specific movie button being clicked
+        $.ajax({
+          url: queryURL,
+          method: "GET"
+        }).then(function (response) {
+          console.log(response);
+          // Creating a div to hold the TV show
+         // var tvDiv = $("<div class='tv'>");
+          //title
+          var title = response.results[0].original_name;
+          console.log(title)
+
+          // Creating an element to have the title displayed
+          //var pZero = $("<p>").text("Title: " + title);
+
+          // Displaying the title
+          //tvDiv.append(pZero);
+          thisHolder.find(".title-title").text(title);
+          //need to get genre list
+          var genreNumbers = response.results[0].genre_ids;
+
+          //convert genre_numer to genre
+          var genreArray = [
+            {
+              id: 10759,
+              genre: "Action & Adventure"
+            },
+            {
+              id: 16,
+              genre: "Animation"
+            },
+            {
+              id: 35,
+              genre: "Comedy"
+            },
+            {
+              id: 80,
+              genre: "Crime"
+            },
+            {
+              id: 99,
+              genre: "Documentary"
+            },
+            {
+              id: 18,
+              genre: "Drama"
+            },
+            {
+              id: 10751,
+              genre: "Family"
+            },
+            {
+              id: 10762,
+              genre: "Kids"
+            },
+            {
+              id: 9648,
+              genre: "Mystery"
+            },
+            {
+              id: 10763,
+              genre: "News"
+            },
+            {
+              id: 10764,
+              genre: "Reality"
+            },
+            {
+              id: 10765,
+              genre: "Science & Fantasy"
+            },
+            {
+              id: 10766,
+              genre: "Soap"
+            },
+            {
+              id: 10767,
+              genre: "Talk"
+            },
+            {
+              id: 10768,
+              genre: "War & Politics"
+            },
+            {
+              id: 37,
+              genre: "Western"
+            }
+          ]
+          function handle_newGenre(genreNumbers) {
+            var pOne = $("<p>");
+            genreNumbers.forEach(number => {
+              const foundObj = genreArray.find(function (genreObj) {
+                return genreObj.id === number;
+              })
+              // Creating an element to have the genre displayed
+              if (foundObj)
+              {
+              pOne.append($("<span>").text(`${foundObj.genre}, `))
+              // Displaying the genre
+
+              thisHolder.find(".title-genre").html(pOne);
+              
+              }
+            });
+          }
+          handle_newGenre(genreNumbers)
+          // Storing the rating data
+          var rating = response.results[0].vote_average;
+
+          // // Creating an element to have the rating displayed
+         
+
+          // // Displaying the rating
+          thisHolder.find(".title-rating").text(rating);
+         
+
+          // Storing the release year
+          //var air_date = response.results[0].first_air_date;
+
+          // Creating an element to hold the release year
+          //var pThree = $("<p>").text("Air Date: " + air_date);
+
+          // Displaying the release year
+          //tvDiv.append(pThree);
+
+          // Storing the plot
+          var plot = response.results[0].overview;
+
+          // Creating an element to hold the plot
+          
+
+          // Appending the plot
+          
+          thisHolder.find(".title-plot").text(plot);
+          // Retrieving the URL for the image
+          var imgURL = "https://image.tmdb.org/t/p/w200/" + response.results[0].poster_path;
+
+          // Creating an element to hold the image
+          //var image = $("<img>").attr("src", imgURL);
+
+          // Appending the image
+          //tvDiv.append(image);
+          var reviews = response.results[0].popularity;
+          thisHolder.find(".title-img").css("background-image","url("+ imgURL +")");
+          thisHolder.find(".title-review").text(reviews)
+          // Putting the entire movie above the previous movies
+         // $("#movies-view").prepend(tvDiv);
+        });
+
+      
+
+      // Function for displaying movie data
+      function renderButtons() {
+
+        // Deleting the movies prior to adding new movies
+        // (this is necessary otherwise you will have repeat buttons)
+        $("#buttons-view").empty();
+
+        // Looping through the array of movies
+        for (var i = 0; i < tvShows.length; i++) {
+
+          // Then dynamicaly generating buttons for each movie in the array
+          // This code $("<button>") is all jQuery needs to create the beginning and end tag. (<button></button>)
+          var a = $("<button>");
+          // Adding a class of movie-btn to our button
+          a.addClass("movie-btn");
+          // Adding a data-attribute
+          a.attr("data-name", tvShows[i]);
+          // Providing the initial button text
+          a.text(tvShows[i]);
+          // Adding the button to the buttons-view div
+          $("#buttons-view").append(a);
+        }
+      }
+
+      // This function handles events where a movie button is clicked
+      $("#add-movie").on("click", function (event) {
+        event.preventDefault();
+        // This line grabs the input from the textbox
+        var tvShow = $("#movie-input").val().trim();
+
+        // Adding movie from the textbox to our array
+        tvShows.push(tvShow);
+        console.log(tvShow);
+
+        // Calling renderButtons which handles the processing of our movie array
+        renderButtons();
+      });
+
+      // Adding a click event listener to all elements with a class of "movie-btn"
+      //$(document).on("click", ".movie-btn", displayMovieInfo);
+
+      // Calling the renderButtons function to display the initial buttons
+      renderButtons();
+
+
     },
   
   // All code above here for document ready function
