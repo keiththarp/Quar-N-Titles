@@ -42,16 +42,6 @@ $(document).ready(function () {
       // Building the API query URL
       const queryURL = `https://www.omdbapi.com/?t=${searchTerm}&apikey=trilogy`;
 
-      // Calling the API
-      $.get(queryURL, function (result) {
-
-        // Destructuring the result
-        const title = result.Title;
-        const genre = result.Genre;
-        const imgSrc = result.Poster;
-        const rating = result.Rated;
-        const plot = result.Plot;
-        const reviews = result.Ratings[0].Value;
 
         // Placing the Values in the template
         thisHolder.find(".title-img").css("background-image", "url(" + imgSrc + ")");
@@ -190,7 +180,7 @@ load();
 
     
 },
-  },
+  
 
     // Book API call function
     bookAPI: function (searchTerm) {
@@ -204,4 +194,4 @@ load();
     },
   
   // All code above here for document ready function
-});
+  } });
