@@ -56,6 +56,7 @@ $(document).ready(function () {
   };
 
   function buildMovieCards(storedMovies) {
+    movieHolder.empty();
 let i=0;
     storedMovies.forEach(function (index) {
       const thisHolder = titleBox.contents().clone().attr("id", index.movTitle);
@@ -94,6 +95,8 @@ const clickListener = $(".individual-title");
   };
 
   function buildBookCards(storedBooks) {
+    bookHolder.empty();
+
 let i=0;
     storedBooks.forEach(function (index) {
       const thisHolder = titleBox.contents().clone().attr("id", index.title);
@@ -120,9 +123,9 @@ let i=0;
         alert("This title already exists");
       } else if (thisClick.hasClass("sub-butt")) {
         console.log(thisIndex);
-        storedMovies.splice(thisIndex, 1);
-        localStorage.setItem('movies', JSON.stringify(storedMovies));
-        buildMovieCards(storedMovies);
+        storedBooks.splice(thisIndex, 1);
+        localStorage.setItem('books', JSON.stringify(storedBooks));
+        buildBookCards(storedBooks);
       }
       return;
 
@@ -131,6 +134,8 @@ let i=0;
   };
 
   function buildTVCards(storedTV) {
+    movieHolder.empty();
+
 let i=0;
     storedTV.forEach(function (index) {
       const thisHolder = titleBox.contents().clone().attr("id", index.tvTitle);
@@ -158,9 +163,9 @@ let i=0;
         alert("This title already exists");
       } else if (thisClick.hasClass("sub-butt")) {
         console.log(thisIndex);
-        storedMovies.splice(thisIndex, 1);
-        localStorage.setItem('movies', JSON.stringify(storedMovies));
-        buildMovieCards(storedMovies);
+        storedTV.splice(thisIndex, 1);
+        localStorage.setItem('tv', JSON.stringify(storedTV));
+        buildTVCards(storedTV);
       }
       return;
 
