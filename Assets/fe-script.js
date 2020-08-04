@@ -239,7 +239,7 @@ $(document).ready(function () {
  // Making the template clone 
  const thisHolder = titleBox.contents().clone().attr("id", searchTerm);
  var imgSrc = "http://covers.openlibrary.org/b/isbn/"+response.docs[0].isbn[0]+"-M.jpg"
- var bookObj ={title:response.docs[0].title,author:response.docs[0].author_name[0],year:response.docs[0].publish_year[0],genre:response.docs[0].subject, imgBk:imgSrc};
+ var bookObj ={title:response.docs[0].title,author:response.docs[0].author_name[0],year:response.docs[0].publish_year[0],genre:response.docs[0].subject[0], imgBk:imgSrc};
 
  thisHolder.find(".title-title").text(bookObj.title);
  thisHolder.find(".title-genre").text(bookObj.genre);
@@ -295,14 +295,14 @@ addButt.on("click", function (event) {
 
         if (response.Response === "False") { alert("No results found"); return }
         else {
-
+          console.log(response);
           var tvObj = {tvTitle:response.results[0].original_name, tvGenre:response.results[0].genre_ids, tvReviews:response.results[0].popularity, tvRating:response.results[0].vote_average, tvPlot:response.results[0].overview, tvImg:"https://image.tmdb.org/t/p/w500/"+response.results[0].poster_path}
           const thisHolder = titleBox.contents().clone().attr("id", searchTerm);
           thisHolder.find(".title-img").css("background-image", "url(" + tvObj.tvImg + ")");
           thisHolder.find(".title-title").text(tvObj.tvTitle);
           thisHolder.find(".title-genre").text(tvObj.tvGenre);
           thisHolder.find(".title-rating").text(tvObj.tvRating);
-          thisHolder.find(".title-review").text(tvObj.tvReviews);
+          //thisHolder.find(".title-review").text(tvObj.tvReviews);
           thisHolder.find(".title-plot").text(tvObj.tvPlot);
           thisHolder.find(".memory-buttons").attr("data-memory", tvObj.tvRating);
 
