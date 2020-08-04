@@ -46,9 +46,11 @@ $(document).ready(function () {
   };
 
   function buildMovieCards(storedMovies) {
+    movieHolder.empty();
 
+    let i=0;
     storedMovies.forEach(function (index) {
-      const thisHolder = titleBox.contents().clone().attr("id", index.movTitle);
+      const thisHolder = titleBox.contents().clone().attr("id", index.movTitle).attr("data-index", i);
       thisHolder.find(".title-img").css("background-image", "url(" + index.movImgSrc + ")");
       thisHolder.find(".title-title").text(index.movTitle);
       thisHolder.find(".title-genre").text(index.movGenre);
@@ -56,19 +58,32 @@ $(document).ready(function () {
       thisHolder.find(".title-review").text(index.movReviews);
       thisHolder.find(".title-plot").text(index.movPlot);
       thisHolder.find(".memory-buttons").attr("data-memory", index.movTitle);
-
       movieHolder.prepend(thisHolder);
+      i++
     });
 
+    const clickListener = $(".individual-title");
     const addButt = $(".add-butt");
     const subButt = $(".sub-butt");
 
-    addButt.on("click", function (event) {
-      alert("This title already exists");
-    });
+    // addButt.on("click", function (event) {
+    //   alert("This title already exists");
+    // });
 
-    subButt.on("click", function () {
 
+    
+    clickListener.on("click", function (event) {
+      let thisIndex = ($(this).attr("data-index"));
+      const thisClick = $(event.target);
+      if(thisClick.hasClass("add-butt")) {
+        alert("This title already exists");
+      } else if (thisClick.hasClass("sub-butt")) {
+        console.log(thisIndex);
+        storedMovies.splice(thisIndex, 1);
+        localStorage.setItem('movies', JSON.stringify(storedMovies));
+        buildMovieCards(storedMovies);
+      }
+      return;
     })
 
   };
@@ -142,7 +157,7 @@ $(document).ready(function () {
               storedMovies.push(movObj);
               localStorage.setItem('movies', JSON.stringify(storedMovies));
             }
-
+            buildMovieCards(storedMovies);
           });
 
         }
