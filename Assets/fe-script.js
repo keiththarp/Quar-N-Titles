@@ -65,12 +65,6 @@ $(document).ready(function () {
     const clickListener = $(".individual-title");
     const addButt = $(".add-butt");
     const subButt = $(".sub-butt");
-
-    // addButt.on("click", function (event) {
-    //   alert("This title already exists");
-    // });
-
-
     
     clickListener.on("click", function (event) {
       let thisIndex = ($(this).attr("data-index"));
