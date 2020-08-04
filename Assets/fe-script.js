@@ -182,7 +182,29 @@ $(document).ready(function () {
     bookAPI: function (searchTerm) {
       thisHolder = bookHolder.prepend(titleBox.contents().clone());
       console.log(`${searchTerm} is the book`);
-    },
+
+      var books = [];
+      queryURL = `http://openlibrary.org/search.json?title=${searchTerm}`
+
+      $.ajax({
+        url: queryURL,
+        method: "GET"
+      }).then(function (response) {
+        if (response.Response === "False") { alert("No results found"); return }
+        else {
+
+          console.log(response);
+          var imgSrc = "http://covers.openlibrary.org/b/isbn/"+response.docs[0].isbn[0]+"-M.jpg"
+          var bookObj ={title:response.docs[0].title,author:response.docs[0].author_name[0],year:response.docs[0].publish_year[0],genre:response.docs[0].subject, imgBk:imgSrc};
+          thisHolder.find(".title-title").text(bookObj.title);
+          thisHolder.find(".title-genre").text(bookObj.genre);
+          thisHolder.find(".title-img").css("background-image", "url(" + bookObj.imgBk + ")");
+          thisHolder.find(".title-review").text(bookObj.author)
+          thisHolder.find(".title-rating").text(bookObj.year);
+
+    }
+  });
+},
     // TV API call function
     tvAPI: function (searchTerm) {
       thisHolder = tvHolder.prepend(titleBox.contents().clone());
