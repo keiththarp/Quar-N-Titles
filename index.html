@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-
+  <!-- Just making a change -->
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,57 +11,245 @@
   <!-- CDN for FontAwesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
     integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
   <link rel="stylesheet" href="./Assets/style.css">
   <title>Quarantine Accomplishments</title>
 </head>
 
 <body>
 
-
-  <div class="main-container">
-
-
-    <!-- **** Possible card layout **** -->
-    <!-- URL with card samples https://tailwindcss.com/components/cards/ -->
-
-    <div class="max-w-sm w-full lg:max-w-full lg:flex">
-      <div
-        class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
-        style="background-image: url('https://www.moviepostersusa.com/media/catalog/product/cache/1/image/600x600/9df78eab33525d08d6e5fb8d27136e95/p/6/p6278.jpg')"
-        title="Woman holding a mug">
+  <div class="main-container flex flex-col h-screen md:w-10/12 mx-auto rounded">
+    <!-- Nav container -->
+    <div class="flex flex-row header-row justify-end rounded-t-lg">
+      <div class="text-left w-2/3 self-center px-2 m-0">
+        <h1><span data-destination="home-card" class="destination"> Quar'N'Titles</span></h1>
       </div>
-      <div
-        class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
-        <div class="mb-8">
+      <div class="destination text-center" data-destination="movie-card"><i class="fas fa-ticket-alt"></i></div>
+      <div class="destination text-center" data-destination="tv-card"><i class="fas fa-tv"></i></div>
+      <div class="destination text-center" data-destination="book-card"><i class="fas fa-book"></i></div>
+    </div>
 
-          <div class="text-gray-900 font-bold text-xl mb-2">Here's a card for movies</div>
-          <p class="text-gray-700 text-base">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus
-            quia,
-            nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.</p>
+    <div class="card-holder">
+      <!-- **** Card holder top **** -->
+      <!-- ** ** Place all cards within card holder ** ** -->
+
+      <!-- *** START Home Card *** -->
+      <div class="all-cards" id="home-card">
+        <div class="hero-holder">
+          <img src="./Assets/home-hero.jpg" />
         </div>
-        <div class="flex items-center">
-          <img class="w-10 h-10 rounded-full mr-4"
-            src="https://static.livebooks.com/f4717b71eec04c14b46b80596cc0063d/i/a89836d9dc694248869dfcf7d8dbd8e0/1/4SoifmQp45JMgBnHfDivx/Photograph%20By%20Los%20Angeles%20Photographer%20Alan%20Weissman"
-            alt="Avatar of Jonathan Reinink">
-          <div class="text-sm">
-            <p class="text-gray-900 leading-none">Maybe a rating here</p>
-            <p class="text-gray-600">Maybe the date viewed? Aug 18</p>
+        <div class="intro-box p-3 bg-white">
+          <br />
+          <h3 class="text-center pb-2">Track & Rank your Quar'N'Titles</h3>
+          <p class="intro">Let's face it, throughout this global pandemic, we've all had plenty of time on our hands
+            to finally watch the movies on our watch list, binge the latest Netflix, Amazon Prime, and Hulu shows, and
+            read some of the books on the best-sellers list. Keep track of all of the movies, tv shows, and books you
+            completed during quarantine so that the next time friends or family ask for a suggestion, you'll have your
+            lists to reference!</p>
+        </div>
+        <div class="butt-box px-3 flex flex-wrap flex-row justify-between">
+          <!-- <div class="destination text-center mt-3 w-full home-butt rounded-lg flex flex-row items-center text-xl" data-destination="top-rated-card">
+              <div class="w-1/4"></div><i class="fas fa-heart"></i> <span class="text-white font-bold pl-3"> Top
+                Rated</span>
+            </div> -->
+          <div
+            class="destination text-center mt-3 w-full md:w-1/4 home-butt rounded-lg flex flex-row items-center text-xl"
+            data-destination="movie-card">
+            <div class="w-1/4"></div><i class="fas fa-ticket-alt"></i><span class="text-white font-bold pl-3">
+              Movies</span>
+          </div>
+          <div
+            class="destination text-center mt-3 w-full md:w-1/4 home-butt rounded-lg flex flex-row items-center text-xl"
+            data-destination="tv-card">
+            <div class="w-1/4"></div><i class="fas fa-tv"></i><span class="text-white font-bold pl-3"> T.V.
+              Shows</span>
+          </div>
+          <div
+            class="destination text-center mt-3 w-full md:w-1/4 home-butt rounded-lg flex flex-row items-center text-xl"
+            data-destination="book-card">
+            <div class="w-1/4"></div><i class="fas fa-book"></i><span class="text-white font-bold pl-3"> Books</span>
           </div>
         </div>
       </div>
+      <!-- *** END Home Card *** -->
+
+      <!--  -->
+
+      <!-- *** START Movie Card *** -->
+      <div class="all-cards hide-card" id="movie-card">
+        <div class="hero-holder mb-12">
+          <img class="mb-6" src="./Assets/movie-hero.jpg" />
+
+          <h3>List of Quarantine Movies</h3>
+          <p class="intro">Keep track of all of the movies you watched during quarantine! That way if friends or
+            family ask you for a movie recommendation, you can quickly pull up your list of most recently watched
+            movies. Enter the title of the movie in the search bar to add it to a list below.</p>
+
+          <form class="mt-6 title-search">
+            <input id="movieAPI" type="text" placeholder="Search for a Title" name="search">
+            <button type="submit"><i class="fas fa-search"></i></button>
+          </form>
+        </div>
+
+        <div class="movie-title-box-holder">
+
+          <!-- Commenting out placeholders
+          <div class="movie w-full flex">
+            <div class="h-auto w-48 flex-none bg-cover rounded-l text-center overflow-hidden"
+              style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-1.2.1&w=1000&q=80')">
+            </div>
+            <div
+              class="description bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+              <div class="mb-8">
+                <div class="text-gray-900 font-bold text-xl mb-2">Movie Title</div>
+                <p class="text-gray-700 text-base">Movie Description (MVP). Personal Rating & Review (MVP+). Lorem ipsum
+                  dolor sit amet,
+                  consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                  aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                  aliquip ex ea commodo consequat.</p>
+              </div>
+            </div>
+          </div>
+          -->
+
+        </div>
+      </div>
+
+      <!-- *** END Movie Card *** -->
+
+      <!--  -->
+
+      <!-- *** START Book Card *** -->
+      <div class="all-cards hide-card" id="book-card">
+        <div class="hero-holder mb-12">
+          <img class="mb-6" src="./Assets/book-hero.jpg" />
+
+          <h3>List of Quarantine Books</h3>
+          <p class="intro">Keep track of all of the books you read during quarantine! That way if friends or
+            family ask you for a book recommendation, you can quickly pull up your list of most recently read
+            books. Enter the title of the book in the search bar to add it to a list below.</p>
+
+          <form class="mt-6 title-search">
+            <input id="bookAPI" type="text" placeholder="Search for a Title" name="search">
+            <button type="submit"><i class="fas fa-search"></i></button>
+          </form>
+        </div>
+
+        <div class="book-title-box-holder">
+
+          <!-- Commenting out placeholders
+          <div class="book w-full lg:max-w-full lg:flex">
+            <div
+              class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
+              style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-1.2.1&w=1000&q=80')">
+            </div>
+            <div
+              class="description bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+              <div class="mb-8">
+                <div class="text-gray-900 font-bold text-xl mb-2">Book Title</div>
+                <p class="text-gray-700 text-base">Book Description (MVP). Personal Rating & Review (MVP+). Lorem ipsum
+                  dolor sit amet,
+                  consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                  aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                  aliquip ex ea commodo consequat.</p>
+              </div>
+            </div>
+          </div> 
+           -->
+
+        </div>
+      </div>
+
+      <!-- *** END Book Card *** -->
+
+      <!--  -->
+
+      <!-- *** START TV Card *** -->
+
+      <div class="all-cards hide-card" id="tv-card">
+        <div class="hero-holder mb-12">
+          <img class="mb-6" src="./Assets/tv-hero.jpg" />
+
+          <h3>List of Quarantine TV Shows</h3>
+          <p class="intro">Keep track of all of the TV shows you watched during quarantine! That way if friends or
+            family ask you for a TV show recommendation, you can quickly pull up your list of most recently watched
+            shows. Enter the title of the show in the search bar to add it to a list below.</p>
+
+          <form class="mt-6 title-search">
+            <input id="tvAPI" type="text" placeholder="Search for a Title" name="search">
+            <button type="submit"><i class="fas fa-search"></i></button>
+          </form>
+        </div>
+        <div class="tv-title-box-holder">
+
+          <!-- **** commenting out placeholders        
+          <div class="tv w-full lg:max-w-full lg:flex">
+            <div
+              class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
+              style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-1.2.1&w=1000&q=80')">
+            </div>
+            <div class="description bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+              <div class="mb-8">
+                <div class="text-gray-900 font-bold text-xl mb-2">TV Show Title</div>
+                <p class="text-gray-700 text-base">TV Show Description (MVP). Personal Rating & Review (MVP+). Lorem
+                  ipsum
+                  dolor sit amet,
+                  consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                  aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                  aliquip ex ea commodo consequat.</p>
+              </div>
+            </div>
+          </div> -->
+
+        </div>
+      </div>
+
+
+      <!-- *** END TV Card *** -->
+      <!-- ** ** All cards above here ** ** -->
+      <!-- **** Card Holder Bottom -->
     </div>
+
+    <!-- **** START Title Box Template **** -->
+    <template class="title-box">
+      <div class="w-full flex mt-3">
+        <div class="h-auto w-48 flex-none bg-cover rounded-l text-center overflow-hidden title-img">
+        </div>
+
+        <div
+          class="w-full description bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+          <div class="mb-8">
+            <div class="text-gray-900 font-bold text-xl mb-2 title-title">Title</div>
+            <div class="text-gray-700 text-base"><b>Genre:</b> <span class="title-genre"></span></div>
+            <div class="text-gray-700 text-base"><b>Rating:</b> <span class="title-rating"></span></div>
+            <div class="text-gray-700 text-base"><b>Public Reviews:</b> <span class="title-review"></span></div>
+            <div class="hidden md:block text-gray-700 text-base"><b>Plot:</b> <span class="title-plot"></span></div>
+          </div>
+        </div>
+      </div>
+
+    </template>
+
+    <!-- **** END Title Box Template **** -->
+
+    <div id="newDiv"></div>
+
+    <!-- **** Footer -->
+    <footer class="mt-12">
+      <div>
+        UNH Bootcamp - Group 6
+      </div>
+    </footer>
   </div>
 
-
-
-
-
+  </div>
   <!-- All JavaScript links below here -->
   <!-- Compiled and minified JavaScript for Materialize -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="Assets/script.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!-- <script src="Assets/script.js"></script> -->
+  <script src="Assets/fe-script.js"></script>
+
 </body>
 
 </html>
-
