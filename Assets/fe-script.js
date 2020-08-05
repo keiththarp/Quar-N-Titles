@@ -404,21 +404,21 @@ $(document).ready(function () {
               genre: "Western"
             }
           ];
-          function handle_newGenre(genreNumbers) {
-            var pOne = $("<p>").text("Genre(s): ");
-            genreNumbers.forEach(number => {
-              const foundObj = genreArray.find(function (genreObj) {
-                return genreObj.id === number;
-              })
-              // Creating an element to have the genre displayed
-              if (foundObj) {
+          // function handle_newGenre(genreNumbers) {
+          //   var pOne = $("<p>").text("Genre(s): ");
+          //   genreNumbers.forEach(number => {
+          //     const foundObj = genreArray.find(function (genreObj) {
+          //       return genreObj.id === number;
+          //     })
+          //     // Creating an element to have the genre displayed
+          //     if (foundObj) {
 
-                // Displaying the genre
-                tvObj.tvGenre = `${foundObj.genre}`;
+          //       // Displaying the genre
+          //       tvObj.tvGenre = `${foundObj.genre}`;
 
-              }
-            });
-          }
+          //     }
+          //   });
+          // }
           handle_newGenre(genreNumbers)
 
           thisHolder.find(".title-img").css("background-image", "url(" + tvObj.tvImg + ")");
