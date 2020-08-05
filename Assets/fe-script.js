@@ -405,7 +405,7 @@ console.log(response);
             }
           ];
           function handle_newGenre(genreNumbers) {
-            var pOne = $("<p>").text("Genre(s): ");
+            
             genreNumbers.forEach(number => {
               const foundObj = genreArray.find(function (genreObj) {
                 return genreObj.id === number;
