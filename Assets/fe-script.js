@@ -244,7 +244,9 @@ $(document).ready(function () {
               storedMovies.push(movObj);
               localStorage.setItem('movies', JSON.stringify(storedMovies));
             }
+
             buildMovieCards(storedMovies);
+
           });
 
         }
@@ -262,11 +264,11 @@ $(document).ready(function () {
 
       queryURL = `http://openlibrary.org/search.json?title=${searchTerm}`
       $.get(queryURL, function (response) {
-
+          
 
         if (response.Response === "False") { alert("No results found"); return }
         else {
-
+console.log(response);
 
 
           // Making the template clone 
@@ -319,6 +321,7 @@ $(document).ready(function () {
 
 
 
+
     // TV API call function
     tvAPI: function (searchTerm) {
 
@@ -330,13 +333,100 @@ $(document).ready(function () {
         if (response.Response === "False") { alert("No results found"); return }
         else {
           console.log(response);
-          var tvObj = { tvTitle: response.results[0].original_name, tvGenre: response.results[0].genre_ids, tvReviews: response.results[0].popularity, tvRating: response.results[0].vote_average, tvPlot: response.results[0].overview, tvImg: "https://image.tmdb.org/t/p/w500/" + response.results[0].poster_path }
+
+          var genreNumbers = response.results[0].genre_ids;
+          var tvObj = {tvTitle:response.results[0].original_name, tvGenre:response.results[0].genre_ids, tvReviews:response.results[0].popularity, tvRating:response.results[0].vote_average, tvPlot:response.results[0].overview, tvImg:"https://image.tmdb.org/t/p/w500/"+response.results[0].poster_path}
+
           const thisHolder = titleBox.contents().clone().attr("id", searchTerm);
+          var genreArray = [
+            {
+              id: 10759,
+              genre: "Action & Adventure"
+            },
+            {
+              id: 16,
+              genre: "Animation"
+            },
+            {
+              id: 35,
+              genre: "Comedy"
+            },
+            {
+              id: 80,
+              genre: "Crime"
+            },
+            {
+              id: 99,
+              genre: "Documentary"
+            },
+            {
+              id: 18,
+              genre: "Drama"
+            },
+            {
+              id: 10751,
+              genre: "Family"
+            },
+            {
+              id: 10762,
+              genre: "Kids"
+            },
+            {
+              id: 9648,
+              genre: "Mystery"
+            },
+            {
+              id: 10763,
+              genre: "News"
+            },
+            {
+              id: 10764,
+              genre: "Reality"
+            },
+            {
+              id: 10765,
+              genre: "Science & Fantasy"
+            },
+            {
+              id: 10766,
+              genre: "Soap"
+            },
+            {
+              id: 10767,
+              genre: "Talk"
+            },
+            {
+              id: 10768,
+              genre: "War & Politics"
+            },
+            {
+              id: 37,
+              genre: "Western"
+            }
+          ];
+          function handle_newGenre(genreNumbers) {
+            var pOne = $("<p>").text("Genre(s): ");
+            genreNumbers.forEach(number => {
+              const foundObj = genreArray.find(function (genreObj) {
+                return genreObj.id === number;
+              })
+              // Creating an element to have the genre displayed
+              if (foundObj)
+              {
+              
+              // Displaying the genre
+              tvObj.tvGenre=`${foundObj.genre}`;
+
+              }
+            });
+          }
+          handle_newGenre(genreNumbers)
+
           thisHolder.find(".title-img").css("background-image", "url(" + tvObj.tvImg + ")");
           thisHolder.find(".title-title").text(tvObj.tvTitle);
           thisHolder.find(".title-genre").text(tvObj.tvGenre);
           thisHolder.find(".title-rating").text(tvObj.tvRating);
-          //thisHolder.find(".title-review").text(tvObj.tvReviews);
+          thisHolder.find(".title-review").text(tvObj.tvReviews);
           thisHolder.find(".title-plot").text(tvObj.tvPlot);
           thisHolder.find(".memory-buttons").attr("data-memory", tvObj.tvRating);
 
@@ -366,7 +456,9 @@ $(document).ready(function () {
               storedTV.push(tvObj);
               localStorage.setItem('tv', JSON.stringify(storedTV));
             }
+
             buildTVCards(storedTV)
+
           });
 
         }
