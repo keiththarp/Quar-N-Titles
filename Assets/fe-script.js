@@ -59,7 +59,7 @@ $(document).ready(function () {
     movieHolder.empty();
 let i=0;
     storedMovies.forEach(function (index) {
-      const thisHolder = titleBox.contents().clone().attr("id", index.movTitle);
+      const thisHolder = titleBox.contents().clone().attr("id", index.movTitle).attr("data-index", i);
       thisHolder.find(".title-img").css("background-image", "url(" + index.movImgSrc + ")");
       thisHolder.find(".title-title").text(index.movTitle);
       thisHolder.find(".title-genre").text(index.movGenre);
@@ -99,7 +99,7 @@ const clickListener = $(".individual-title");
 
 let i=0;
     storedBooks.forEach(function (index) {
-      const thisHolder = titleBox.contents().clone().attr("id", index.title);
+      const thisHolder = titleBox.contents().clone().attr("id", index.title).attr("data-index", i);
       thisHolder.find(".title-img").css("background-image", "url(" + index.imgBk + ")");
       thisHolder.find(".title-title").text(index.title);
       thisHolder.find(".title-genre").text(index.genre);
@@ -138,7 +138,7 @@ let i=0;
 
 let i=0;
     storedTV.forEach(function (index) {
-      const thisHolder = titleBox.contents().clone().attr("id", index.tvTitle);
+      const thisHolder = titleBox.contents().clone().attr("id", index.tvTitle).attr("data-index", i);
       thisHolder.find(".title-img").css("background-image", "url(" + index.tvImg + ")");
       thisHolder.find(".title-title").text(index.tvTitle);
       thisHolder.find(".title-genre").text(index.tvGenre);
@@ -245,7 +245,7 @@ let i=0;
               storedMovies.push(movObj);
               localStorage.setItem('movies', JSON.stringify(storedMovies));
             }
-
+              buildMovieCards(storedMovies);
           });
 
         }
@@ -310,7 +310,7 @@ addButt.on("click", function (event) {
   }
 
 });
-
+buildBookCards(storedBooks);
 }
 });
 
@@ -366,7 +366,7 @@ addButt.on("click", function (event) {
               storedTV.push(tvObj);
               localStorage.setItem('tv', JSON.stringify(storedTV));
             }
-
+            buildTVCards(storedTV);
           });
 
         }
