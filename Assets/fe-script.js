@@ -264,11 +264,11 @@ $(document).ready(function () {
 
       queryURL = `https://openlibrary.org/search.json?title=${searchTerm}`
       $.get(queryURL, function (response) {
-          
+
 
         if (response.Response === "False") { alert("No results found"); return }
         else {
-console.log(response);
+          console.log(response);
 
 
           // Making the template clone 
@@ -335,7 +335,7 @@ console.log(response);
           console.log(response);
 
           var genreNumbers = response.results[0].genre_ids;
-          var tvObj = {tvTitle:response.results[0].original_name, tvGenre:response.results[0].genre_ids, tvReviews:response.results[0].popularity, tvRating:response.results[0].vote_average, tvPlot:response.results[0].overview, tvImg:"https://image.tmdb.org/t/p/w500/"+response.results[0].poster_path}
+          var tvObj = { tvTitle: response.results[0].original_name, tvGenre: response.results[0].genre_ids, tvReviews: response.results[0].popularity, tvRating: response.results[0].vote_average, tvPlot: response.results[0].overview, tvImg: "https://image.tmdb.org/t/p/w500/" + response.results[0].poster_path }
 
           const thisHolder = titleBox.contents().clone().attr("id", searchTerm);
           var genreArray = [
@@ -411,11 +411,10 @@ console.log(response);
                 return genreObj.id === number;
               })
               // Creating an element to have the genre displayed
-              if (foundObj)
-              {
-              
-              // Displaying the genre
-              tvObj.tvGenre=`${foundObj.genre}`;
+              if (foundObj) {
+
+                // Displaying the genre
+                tvObj.tvGenre = `${foundObj.genre}`;
 
               }
             });
