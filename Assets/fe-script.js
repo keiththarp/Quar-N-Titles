@@ -263,11 +263,11 @@ let i=0;
 
       queryURL = `http://openlibrary.org/search.json?title=${searchTerm}`
       $.get(queryURL, function (response) {
-
+          
 
         if (response.Response === "False") { alert("No results found"); return }
         else {
-
+console.log(response);
 
 
  // Making the template clone 
