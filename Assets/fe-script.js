@@ -11,6 +11,8 @@ $(document).ready(function () {
   const bookHolder = $(".book-title-box-holder");
   const tvHolder = $(".tv-title-box-holder");
   let storedMovies;
+  let storedTV;
+  let storedBooks;
 
   // Card Switcher
   $(".destination").on("click", function (event) {
@@ -38,17 +40,24 @@ $(document).ready(function () {
       buildMovieCards(storedMovies)
     },
     bookcard: function () {
-
+      storedBooks = JSON.parse(localStorage.getItem("books"));
+      if (!storedBooks) {
+        return
+      };
+      buildBookCards(storedBooks)
     },
     tvcard: function () {
-
+      storedTV = JSON.parse(localStorage.getItem("tv"));
+      if (!storedTV) {
+        return
+      };
+      buildTVCards(storedTV)
     }
   };
 
   function buildMovieCards(storedMovies) {
     movieHolder.empty();
-
-    let i=0;
+    let i = 0;
     storedMovies.forEach(function (index) {
       const thisHolder = titleBox.contents().clone().attr("id", index.movTitle).attr("data-index", i);
       thisHolder.find(".title-img").css("background-image", "url(" + index.movImgSrc + ")");
@@ -59,17 +68,18 @@ $(document).ready(function () {
       thisHolder.find(".title-plot").text(index.movPlot);
       thisHolder.find(".memory-buttons").attr("data-memory", index.movTitle);
       movieHolder.prepend(thisHolder);
-      i++
+      i++;
     });
 
-    const clickListener = $(".individual-title");
+
     const addButt = $(".add-butt");
     const subButt = $(".sub-butt");
-    
+    const clickListener = $(".individual-title");
+
     clickListener.on("click", function (event) {
       let thisIndex = ($(this).attr("data-index"));
       const thisClick = $(event.target);
-      if(thisClick.hasClass("add-butt")) {
+      if (thisClick.hasClass("add-butt")) {
         alert("This title already exists");
       } else if (thisClick.hasClass("sub-butt")) {
         console.log(thisIndex);
@@ -78,6 +88,86 @@ $(document).ready(function () {
         buildMovieCards(storedMovies);
       }
       return;
+
+    })
+
+  };
+
+  function buildBookCards(storedBooks) {
+    bookHolder.empty();
+
+    let i = 0;
+    storedBooks.forEach(function (index) {
+      const thisHolder = titleBox.contents().clone().attr("id", index.title).attr("data-index", i);
+      thisHolder.find(".title-img").css("background-image", "url(" + index.imgBk + ")");
+      thisHolder.find(".title-title").text(index.title);
+      thisHolder.find(".title-genre").text(index.genre);
+      thisHolder.find(".title-rating").text(index.year);
+      thisHolder.find(".title-review").text(index.author);
+      thisHolder.find(".title-plot").text(index.movPlot);
+      thisHolder.find(".memory-buttons").attr("data-memory", index.title);
+
+      bookHolder.prepend(thisHolder);
+      i++;
+    });
+
+    const addButt = $(".add-butt");
+    const subButt = $(".sub-butt");
+    const clickListener = $(".individual-title");
+
+    clickListener.on("click", function (event) {
+      let thisIndex = ($(this).attr("data-index"));
+      const thisClick = $(event.target);
+      if (thisClick.hasClass("add-butt")) {
+        alert("This title already exists");
+      } else if (thisClick.hasClass("sub-butt")) {
+        console.log(thisIndex);
+        storedBooks.splice(thisIndex, 1);
+        localStorage.setItem('books', JSON.stringify(storedBooks));
+        buildBookCards(storedBooks);
+      }
+      return;
+
+    })
+
+  };
+
+  function buildTVCards(storedTV) {
+    tvHolder.empty();
+
+    let i = 0;
+    storedTV.forEach(function (index) {
+      const thisHolder = titleBox.contents().clone().attr("id", index.tvTitle).attr("data-index", i);
+      thisHolder.find(".title-img").css("background-image", "url(" + index.tvImg + ")");
+      thisHolder.find(".title-title").text(index.tvTitle);
+      thisHolder.find(".title-genre").text(index.tvGenre);
+      thisHolder.find(".title-rating").text(index.tvRate);
+      thisHolder.find(".title-review").text(index.tvReviews);
+      thisHolder.find(".title-plot").text(index.tvPlot);
+      thisHolder.find(".memory-buttons").attr("data-memory", index.tvTitle);
+
+      tvHolder.prepend(thisHolder);
+      i++
+    });
+
+    const addButt = $(".add-butt");
+    const subButt = $(".sub-butt");
+
+    const clickListener = $(".individual-title");
+
+    clickListener.on("click", function (event) {
+      let thisIndex = ($(this).attr("data-index"));
+      const thisClick = $(event.target);
+      if (thisClick.hasClass("add-butt")) {
+        alert("This title already exists");
+      } else if (thisClick.hasClass("sub-butt")) {
+        console.log(thisIndex);
+        storedTV.splice(thisIndex, 1);
+        localStorage.setItem('tv', JSON.stringify(storedTV));
+        buildTVCards(storedTV);
+      }
+      return;
+
     })
 
   };
@@ -106,7 +196,7 @@ $(document).ready(function () {
       const queryURL = `https://www.omdbapi.com/?t=${searchTerm}&apikey=trilogy`;
 
 
-      // var selectedMov = []
+
 
       $.get(queryURL, function (response) {
 
@@ -164,304 +254,125 @@ $(document).ready(function () {
 
 
 
-    // Book API call function
-    bookAPI: function (searchTerm) {
-      thisHolder = bookHolder.prepend(titleBox.contents().clone());
-      console.log(`${searchTerm} is the book`);
-    },
-    // TV API call function
-    tvAPI: function (searchTerm) {
-      thisHolder = tvHolder.prepend(titleBox.contents().clone());
-      console.log(`${searchTerm} is the T.V. show`);
-    },
 
-
-    // All code above here for document ready function
-  }
-});
-
-
-
-          function exist() {
-            for (i = 0; i < selectedMov.length; i++) {
-              if (title === selectedMov[i].movTitle) { return true }
-
-                          // function exist() {
-                          //   for (i = 0; i < selectedMov.length; i++) {
-                          //     if (title === selectedMov[i].movTitle) { return true }
-
-
-                          //   }
-                          // }
-                          // if (exist === true) { return }
-
-
-
-                      // }
-
-
-
-
-                      // load();
-
-    },
 
 
     // Book API call function
     bookAPI: function (searchTerm) {
-      thisHolder = bookHolder.prepend(titleBox.contents().clone());
-      console.log(`${searchTerm} is the book`);
 
-      var books = [];
       queryURL = `http://openlibrary.org/search.json?title=${searchTerm}`
+      $.get(queryURL, function (response) {
 
-      $.ajax({
-        url: queryURL,
-        method: "GET"
-      }).then(function (response) {
+
         if (response.Response === "False") { alert("No results found"); return }
         else {
 
-          console.log(response);
-          var imgSrc = "http://covers.openlibrary.org/b/isbn/"+response.docs[0].isbn[0]+"-M.jpg"
-          var bookObj ={title:response.docs[0].title,author:response.docs[0].author_name[0],year:response.docs[0].publish_year[0],genre:response.docs[0].subject, imgBk:imgSrc};
+
+
+          // Making the template clone 
+          const thisHolder = titleBox.contents().clone().attr("id", searchTerm);
+          var imgSrc = "http://covers.openlibrary.org/b/isbn/" + response.docs[0].isbn[0] + "-M.jpg"
+          var bookObj = { title: response.docs[0].title, author: response.docs[0].author_name[0], year: response.docs[0].publish_year[0], genre: response.docs[0].subject[0], imgBk: imgSrc };
+
           thisHolder.find(".title-title").text(bookObj.title);
           thisHolder.find(".title-genre").text(bookObj.genre);
           thisHolder.find(".title-img").css("background-image", "url(" + bookObj.imgBk + ")");
           thisHolder.find(".title-review").text(bookObj.author)
           thisHolder.find(".title-rating").text(bookObj.year);
+          thisHolder.find(".memory-buttons").attr("data-memory", response.Title);
 
-    }
-  });
-},
-    // TV API call function
-    tvAPI: function (searchTerm) {
-      thisHolder = tvHolder.prepend(titleBox.contents().clone());
-      console.log(`${searchTerm} is the T.V. show`);
+          bookHolder.prepend(thisHolder);
+          const addButt = $(".add-butt");
 
-      var tvShows = [];
-      // displayMovieInfo function re-renders the HTML to display the appropriate content
+          addButt.on("click", function (event) {
+            thisSaveButt = $(this).parent().attr("data-memory");
+            storedBooks = JSON.parse(localStorage.getItem("books"));
+            if (!storedBooks) {
+              storedBooks = [];
+              storedBooks.push(bookObj);
+              localStorage.setItem('books', JSON.stringify(storedBooks));
 
-
-
-      var queryURL = `https://api.themoviedb.org/3/search/tv?api_key=0351780339b03ea3cf61554eb7f3d4cb&query=${searchTerm}`;
-
-
- 
-
-
-      $.ajax({
-        url: queryURL,
-        method: "GET"
-      }).then(function (response) {
-        if (response.Response === "False") { alert("No results found"); return }
-        else {
-
-          console.log(response);
-
-          var title = response.results[0].original_name;
-          var genreNumbers = response.results[0].genre_ids;
-          var imgURL = "https://image.tmdb.org/t/p/w200/" + response.results[0].poster_path;
-          var reviews = response.results[0].popularity;
-          var rating = response.results[0].vote_average;
-          var plot = response.results[0].overview;
-          var tvObj = {tvTitle:title, tvGenre:genreNumbers, tvReviews:reviews, tvRating:rating, tvPlot:plot, tvImg:imgURL}
-          thisHolder.find(".title-rating").text(rating);
-          thisHolder.find(".title-title").text(title);
-          thisHolder.find(".title-plot").text(plot);
-          thisHolder.find(".title-img").css("background-image", "url(" + imgURL + ")");
-          thisHolder.find(".title-review").text(reviews)
-
-
-          //convert genre_numer to genre
-          var genreArray = [
-            {
-              id: 10759,
-              genre: "Action & Adventure"
-            },
-            {
-              id: 16,
-              genre: "Animation"
-            },
-            {
-              id: 35,
-              genre: "Comedy"
-            },
-            {
-              id: 80,
-              genre: "Crime"
-            },
-            {
-              id: 99,
-              genre: "Documentary"
-            },
-            {
-              id: 18,
-              genre: "Drama"
-            },
-            {
-              id: 10751,
-              genre: "Family"
-            },
-            {
-              id: 10762,
-              genre: "Kids"
-            },
-            {
-              id: 9648,
-              genre: "Mystery"
-            },
-            {
-              id: 10763,
-              genre: "News"
-            },
-            {
-              id: 10764,
-              genre: "Reality"
-            },
-            {
-              id: 10765,
-              genre: "Science & Fantasy"
-            },
-            {
-              id: 10766,
-              genre: "Soap"
-            },
-            {
-              id: 10767,
-              genre: "Talk"
-            },
-            {
-              id: 10768,
-              genre: "War & Politics"
-            },
-            {
-              id: 37,
-              genre: "Western"
+              return;
             }
-          ]
+            let exists = false;
+            storedBooks.forEach(function (index) {
 
-
-          function handle_newGenre(genreNumbers) {
-            var pOne = $("<p>");
-            genreNumbers.forEach(number => {
-              const foundObj = genreArray.find(function (genreObj) {
-                return genreObj.id === number;
-              })
-              // Creating an element to have the genre displayed
-              if (foundObj) {
-                pOne.append($("<span>").text(`${foundObj.genre}, `))
-                // Displaying the genre
-
-                thisHolder.find(".title-genre").html(pOne);
-
+              if (thisSaveButt === index.title) {
+                alert("This title already exists in your list");
+                exists = true
+                return;
               }
             });
-          }
-
-          handle_newGenre(genreNumbers)
-
-
-          function addBut() {
-            var selBut = $("<button>");
-            selBut.text("Add");
-            selBut.on("click", function () {
-
-
-              tvShows.push(tvObj);
-
-
-              localStorage.setItem('tvshows', JSON.stringify(tvShows));
-
-
-              renderList();
-            });
-            $("#newDiv").append(selBut);
-          }
-
-          function exist() {
-            for (i = 0; i < tvShows.length; i++) {
-              if (title === tvShows[i].tvTitle) { return true }
-
+            if (!exists) {
+              storedBooks.push(bookObj);
+              localStorage.setItem('books', JSON.stringify(storedBooks));
             }
-          }
-          if (exist === true) { return }
-          else { addBut() }
-
-
-
-        }
-});
-        function load() {
-
-          if (localStorage.getItem("tvshows") === null) { return }
-          else {
-            var tempTV = localStorage.getItem("tvshows");
-            tvShows = JSON.parse(tempTV);
-          }
-          renderList();
-        }
-        function clear() {
-          thisHolder.find(".title-img").html("");
-          thisHolder.find(".title-title").text("");
-          thisHolder.find(".title-genre").text("");
-          thisHolder.find(".title-rating").text("");
-          thisHolder.find(".title-review").text("");
-          thisHolder.find(".title-plot").text("");
-  
-        }
-      
-
-      function renderList() {
-        $("#newDiv").html("");
-        for (i = 0; i < tvShows.length; i++) {
-          var tvBut = $("<button>");
-          tvBut.text(tvShows[i].tvTitle);
-          tvBut.attr('data-index', i);
-          tvBut.attr('value', tvShows[i]);
-          tvBut.on("click", function () {
-            var Index = this.dataset.index;
-
-
-            thisHolder.find(".title-img").css("background-image", "url(" + tvShows[Index].tvImg + ")");
-            thisHolder.find(".title-title").text(tvShows[Index].tvTitle);
-            thisHolder.find(".title-genre").text(tvShows[Index].tvGenre);
-            thisHolder.find(".title-rating").text(tvShows[Index].tvRate);
-            thisHolder.find(".title-review").text(tvShows[Index].tvReviews);
-            thisHolder.find(".title-plot").text(tvShows[Index].tvPlot);
-            var removeBut = $("<button>");
-            removeBut.text("Remove");
-            removeBut.on("click", function () {
-              var thisTV = localStorage.getItem("tvshows");
-              var tvArray = JSON.parse(thisTV);
-              tvArray.splice(Index, 1);
-              localStorage.setItem("tvshows", JSON.stringify(tvArray));
-              tvShows.splice(Index, 1);
-              clear();
-              load();
-
-            })
-            $("#newDiv").append(removeBut);
+            buildBookCards(storedBooks);
 
           });
-          $("#newDiv").append(tvBut);
 
         }
-      }
-      function clear() {
-        thisHolder.find(".title-img").html("");
-        thisHolder.find(".title-title").html("");
-        thisHolder.find(".title-genre").html("");
-        thisHolder.find(".title-rating").html("");
-        thisHolder.find(".title-review").html("");
-        thisHolder.find(".title-plot").html("");
-
-      }
-load();
+      });
 
     },
 
-    // All code above here for document ready function
+
+
+
+    // TV API call function
+    tvAPI: function (searchTerm) {
+
+      var queryURL = `https://api.themoviedb.org/3/search/tv?api_key=0351780339b03ea3cf61554eb7f3d4cb&query=${searchTerm}`;
+
+      $.get(queryURL, function (response) {
+
+
+        if (response.Response === "False") { alert("No results found"); return }
+        else {
+          console.log(response);
+          var tvObj = { tvTitle: response.results[0].original_name, tvGenre: response.results[0].genre_ids, tvReviews: response.results[0].popularity, tvRating: response.results[0].vote_average, tvPlot: response.results[0].overview, tvImg: "https://image.tmdb.org/t/p/w500/" + response.results[0].poster_path }
+          const thisHolder = titleBox.contents().clone().attr("id", searchTerm);
+          thisHolder.find(".title-img").css("background-image", "url(" + tvObj.tvImg + ")");
+          thisHolder.find(".title-title").text(tvObj.tvTitle);
+          thisHolder.find(".title-genre").text(tvObj.tvGenre);
+          thisHolder.find(".title-rating").text(tvObj.tvRating);
+          //thisHolder.find(".title-review").text(tvObj.tvReviews);
+          thisHolder.find(".title-plot").text(tvObj.tvPlot);
+          thisHolder.find(".memory-buttons").attr("data-memory", tvObj.tvRating);
+
+          tvHolder.prepend(thisHolder);
+          const addButt = $(".add-butt");
+
+          addButt.on("click", function (event) {
+            thisSaveButt = $(this).parent().attr("data-memory");
+            storedTV = JSON.parse(localStorage.getItem("tv"));
+            if (!storedTV) {
+              storedTV = [];
+              storedTV.push(tvObj);
+              localStorage.setItem('tv', JSON.stringify(storedTV));
+
+              return;
+            }
+            let exists = false;
+            storedTV.forEach(function (index) {
+
+              if (thisSaveButt === index.tvTitle) {
+                alert("This title already exists in your list");
+                exists = true
+                return;
+              }
+            });
+            if (!exists) {
+              storedTV.push(tvObj);
+              localStorage.setItem('tv', JSON.stringify(storedTV));
+            }
+            buildTVCards(storedTV)
+          });
+
+        }
+      });
+
+    },
   }
 });
 
