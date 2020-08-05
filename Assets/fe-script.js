@@ -262,7 +262,7 @@ $(document).ready(function () {
     // Book API call function
     bookAPI: function (searchTerm) {
 
-      queryURL = `http://openlibrary.org/search.json?title=${searchTerm}`
+      queryURL = `https://openlibrary.org/search.json?title=${searchTerm}`
       $.get(queryURL, function (response) {
           
 
@@ -273,7 +273,7 @@ console.log(response);
 
           // Making the template clone 
           const thisHolder = titleBox.contents().clone().attr("id", searchTerm);
-          var imgSrc = "http://covers.openlibrary.org/b/isbn/" + response.docs[0].isbn[0] + "-M.jpg"
+          var imgSrc = "https://covers.openlibrary.org/b/isbn/" + response.docs[0].isbn[0] + "-M.jpg"
           var bookObj = { title: response.docs[0].title, author: response.docs[0].author_name[0], year: response.docs[0].publish_year[0], genre: response.docs[0].subject[0], imgBk: imgSrc };
 
           thisHolder.find(".title-title").text(bookObj.title);
