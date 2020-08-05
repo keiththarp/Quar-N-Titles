@@ -420,8 +420,8 @@ buildBookCards(storedBooks);
           thisHolder.find(".title-img").css("background-image", "url(" + tvObj.tvImg + ")");
           thisHolder.find(".title-title").text(tvObj.tvTitle);
           thisHolder.find(".title-genre").text(tvObj.tvGenre);
-          thisHolder.find(".title-rating").text(tvObj.tvRating);
-          //thisHolder.find(".title-review").text(tvObj.tvReviews);
+          //thisHolder.find(".title-rating").text(tvObj.tvRating);
+          thisHolder.find(".title-review").text(tvObj.tvReviews);
           thisHolder.find(".title-plot").text(tvObj.tvPlot);
           thisHolder.find(".memory-buttons").attr("data-memory", tvObj.tvRating);
 
