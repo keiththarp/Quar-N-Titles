@@ -93,24 +93,7 @@
 
         <div class="movie-title-box-holder">
 
-          <!-- Commenting out placeholders
-          <div class="movie w-full flex">
-            <div class="h-auto w-48 flex-none bg-cover rounded-l text-center overflow-hidden"
-              style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-1.2.1&w=1000&q=80')">
-            </div>
-            <div
-              class="description bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
-              <div class="mb-8">
-                <div class="text-gray-900 font-bold text-xl mb-2">Movie Title</div>
-                <p class="text-gray-700 text-base">Movie Description (MVP). Personal Rating & Review (MVP+). Lorem ipsum
-                  dolor sit amet,
-                  consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                  aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                  aliquip ex ea commodo consequat.</p>
-              </div>
-            </div>
-          </div>
-          -->
+          <!-- Movie Titles saved will populate here with the <template> from below -->
 
         </div>
       </div>
@@ -137,25 +120,7 @@
 
         <div class="book-title-box-holder">
 
-          <!-- Commenting out placeholders
-          <div class="book w-full lg:max-w-full lg:flex">
-            <div
-              class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
-              style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-1.2.1&w=1000&q=80')">
-            </div>
-            <div
-              class="description bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
-              <div class="mb-8">
-                <div class="text-gray-900 font-bold text-xl mb-2">Book Title</div>
-                <p class="text-gray-700 text-base">Book Description (MVP). Personal Rating & Review (MVP+). Lorem ipsum
-                  dolor sit amet,
-                  consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                  aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                  aliquip ex ea commodo consequat.</p>
-              </div>
-            </div>
-          </div> 
-           -->
+          <!-- Book Titles saved will populate here with the <template> from below -->
 
         </div>
       </div>
@@ -182,46 +147,8 @@
         </div>
         <div class="tv-title-box-holder">
 
-          <!-- **** commenting out placeholders        
-          <div class="tv w-full lg:max-w-full lg:flex">
-            <div
-              class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
-              style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-1.2.1&w=1000&q=80')">
-            </div>
-            <div class="description bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
-              <div class="mb-8">
-                <div class="text-gray-900 font-bold text-xl mb-2">TV Show Title</div>
-                <p class="text-gray-700 text-base">TV Show Description (MVP). Personal Rating & Review (MVP+). Lorem
-                  ipsum
-                  dolor sit amet,
-                  consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                  aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                  aliquip ex ea commodo consequat.</p>
-              </div>
-            </div>
-          </div> -->
+          <!-- TV Titles saved will populate here with the <template> from below -->
 
-          <!-- <div class="w-full flex mt-3">
-            <div class="h-auto w-48 flex-none bg-cover rounded-l text-center overflow-hidden title-img"
-              style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-1.2.1&w=1000&q=80')">
-            </div>
-
-            <div
-              class="w-full description bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
-              <div class="mb-8 template-box">
-                <div class="memory-buttons"><button class="add-butt">+</button><button class="sub-butt">X</button>
-                </div>
-                <div class="text-gray-900 font-bold text-xl mb-2 title-title">Title</div>
-                <div class="text-gray-700 text-base"><b>Genre:</b> <span class="title-genre"></span></div>
-                <div class="text-gray-700 text-base"><b>Rating:</b> <span class="title-rating"></span></div>
-                <div class="text-gray-700 text-base"><b>Public Reviews:</b> <span class="title-review"></span></div>
-                <div class="hidden md:block text-gray-700 text-base"><b>Plot:</b> <span class="title-plot"></span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>-->
         </div>
 
 
@@ -254,7 +181,21 @@
 
       <!-- **** END Title Box Template **** -->
 
-      <div id="newDiv"></div>
+      <!-- Begin Title already exists modal -->
+      <div class="title-exists bg-opacity-50 bg-orange-400 flex items-center justify-center">
+        <div class="modal-box bg-white rounded border-solid border-2 border-red-600 p-12">
+          <button class="close-butt">X</button>
+          <p class="modal-alert">That title already exists in your library!</p>
+        </div>
+      </div>
+
+      <!-- Begin No Results modal -->
+      <div class="no-results-exists bg-opacity-50 bg-orange-400 flex items-center justify-center">
+        <div class="modal-box bg-white rounded border-solid border-2 border-red-600 p-12">
+          <button class="close-butt">X</button>
+          <p class="modal-alert">Sorry, no results were found.</p>
+        </div>
+      </div>
 
       <!-- **** Footer -->
       <footer class="mt-12">
