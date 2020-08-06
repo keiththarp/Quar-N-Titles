@@ -123,3 +123,52 @@ div.memory-buttons {
   border-bottom-right-radius: 10px;
   background-color: red;
 }
+
+div.title-exists {
+  display: none;
+  position: fixed;
+  z-index: 9;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  padding: 150px;
+
+}
+
+div.no-results-exists {
+    display: none;
+    position: fixed;
+    z-index: 9;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    padding: 150px;
+}
+
+div.modal-box {
+  position: relative;
+}
+
+.close-butt {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  cursor: pointer;
+  line-height: normal;
+  color: white;
+  font-size: 1.4em;
+  padding: 4px 9px 5px 9px;
+  font-weight: bold;
+  border-radius: 5px;
+  background-color: red;
+}
+
+p.modal-alert {
+  color: black;
+  font-size: 1.5em;
+  font-weight: 600;
+}

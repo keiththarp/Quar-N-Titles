@@ -10,9 +10,18 @@ $(document).ready(function () {
   const movieHolder = $(".movie-title-box-holder");
   const bookHolder = $(".book-title-box-holder");
   const tvHolder = $(".tv-title-box-holder");
+  // Modal variables
+  const theModal = $(".title-exists");
+  const noResultsModal = $(".no-results-exists")
+  const closeButt = $(".close-butt");
   let storedMovies;
   let storedTV;
   let storedBooks;
+
+  closeButt.on("click", function () {
+    theModal.css("display", "none");
+    noResultsModal.css("display", "none");
+  });
 
   // Card Switcher
   $(".destination").on("click", function (event) {
@@ -80,7 +89,7 @@ $(document).ready(function () {
       let thisIndex = ($(this).attr("data-index"));
       const thisClick = $(event.target);
       if (thisClick.hasClass("add-butt")) {
-        alert("This title already exists");
+        theModal.css("display", "inline")
       } else if (thisClick.hasClass("sub-butt")) {
         console.log(thisIndex);
         storedMovies.splice(thisIndex, 1);
@@ -119,7 +128,7 @@ $(document).ready(function () {
       let thisIndex = ($(this).attr("data-index"));
       const thisClick = $(event.target);
       if (thisClick.hasClass("add-butt")) {
-        alert("This title already exists");
+        theModal.css("display", "inline")
       } else if (thisClick.hasClass("sub-butt")) {
         console.log(thisIndex);
         storedBooks.splice(thisIndex, 1);
@@ -159,7 +168,7 @@ $(document).ready(function () {
       let thisIndex = ($(this).attr("data-index"));
       const thisClick = $(event.target);
       if (thisClick.hasClass("add-butt")) {
-        alert("This title already exists");
+        theModal.css("display", "inline")
       } else if (thisClick.hasClass("sub-butt")) {
         console.log(thisIndex);
         storedTV.splice(thisIndex, 1);
@@ -201,7 +210,7 @@ $(document).ready(function () {
       $.get(queryURL, function (response) {
 
 
-        if (response.Response === "False") { alert("No results found"); return }
+        if (response.Response === "False") { noResultsModal.css("display", "inline"); return }
         else {
 
 
@@ -235,7 +244,7 @@ $(document).ready(function () {
             storedMovies.forEach(function (index) {
 
               if (thisSaveButt === index.movTitle) {
-                alert("This title already exists in your list");
+                theModal.css("display", "inline")
                 exists = true
                 return;
               }
@@ -264,11 +273,11 @@ $(document).ready(function () {
 
       queryURL = `http://openlibrary.org/search.json?title=${searchTerm}`
       $.get(queryURL, function (response) {
-          
 
-        if (response.Response === "False") { alert("No results found"); return }
+
+        if (response.Response === "False") { noResultsModal.css("display", "inline"); return }
         else {
-console.log(response);
+          console.log(response);
 
 
           // Making the template clone 
@@ -300,7 +309,7 @@ console.log(response);
             storedBooks.forEach(function (index) {
 
               if (thisSaveButt === index.title) {
-                alert("This title already exists in your list");
+                theModal.css("display", "inline")
                 exists = true
                 return;
               }
@@ -330,12 +339,12 @@ console.log(response);
       $.get(queryURL, function (response) {
 
 
-        if (response.Response === "False") { alert("No results found"); return }
+        if (response.Response === "False") { noResultsModal.css("display", "inline"); return }
         else {
           console.log(response);
 
           var genreNumbers = response.results[0].genre_ids;
-          var tvObj = {tvTitle:response.results[0].original_name, tvGenre:response.results[0].genre_ids, tvReviews:response.results[0].popularity, tvRating:response.results[0].vote_average, tvPlot:response.results[0].overview, tvImg:"https://image.tmdb.org/t/p/w500/"+response.results[0].poster_path}
+          var tvObj = { tvTitle: response.results[0].original_name, tvGenre: response.results[0].genre_ids, tvReviews: response.results[0].popularity, tvRating: response.results[0].vote_average, tvPlot: response.results[0].overview, tvImg: "https://image.tmdb.org/t/p/w500/" + response.results[0].poster_path }
 
           const thisHolder = titleBox.contents().clone().attr("id", searchTerm);
           var genreArray = [
@@ -411,11 +420,10 @@ console.log(response);
                 return genreObj.id === number;
               })
               // Creating an element to have the genre displayed
-              if (foundObj)
-              {
-              
-              // Displaying the genre
-              tvObj.tvGenre=`${foundObj.genre}`;
+              if (foundObj) {
+
+                // Displaying the genre
+                tvObj.tvGenre = `${foundObj.genre}`;
 
               }
             });
@@ -447,7 +455,7 @@ console.log(response);
             storedTV.forEach(function (index) {
 
               if (thisSaveButt === index.tvTitle) {
-                alert("This title already exists in your list");
+                theModal.css("display", "inline")
                 exists = true
                 return;
               }
