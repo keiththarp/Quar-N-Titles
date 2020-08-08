@@ -27,7 +27,7 @@ div.header-row {
 .destination {
   cursor: pointer;
 }
-i {
+i.fa-ticket-alt, i.fa-tv, i.fa-book {
   width: 32px;
   color: #1B346C;
   height: auto;
@@ -103,9 +103,11 @@ div.memory-buttons {
 .add-butt {
   cursor: pointer;
   line-height: normal;
+  height: 45px;
+  width: 45px;
   color: white;
-  font-size: 2em;
-  padding: 0px 9px 6px 9px;
+  font-size: 1.5em;
+  /* padding: 0px 9px 6px 9px; */
   font-weight: bold;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
@@ -115,9 +117,12 @@ div.memory-buttons {
 .sub-butt {
   cursor: pointer;
   line-height: normal;
+  text-align: center;
+  height: 45px;
+  width: 45px;
   color: white;
-  font-size: 1.6em;
-  padding: 6px 9px 8px 9px;
+  font-size: 1.5em;
+  /* padding: 6px 9px 8px 9px; */
   font-weight: bold;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
