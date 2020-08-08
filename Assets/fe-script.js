@@ -91,7 +91,7 @@ $(document).ready(function () {
       if (thisClick.hasClass("add-butt")) {
         theModal.css("display", "inline")
       } else if (thisClick.hasClass("sub-butt")) {
-        console.log(thisIndex);
+       
         storedMovies.splice(thisIndex, 1);
         localStorage.setItem('movies', JSON.stringify(storedMovies));
         buildMovieCards(storedMovies);
@@ -130,7 +130,7 @@ $(document).ready(function () {
       if (thisClick.hasClass("add-butt")) {
         theModal.css("display", "inline")
       } else if (thisClick.hasClass("sub-butt")) {
-        console.log(thisIndex);
+      
         storedBooks.splice(thisIndex, 1);
         localStorage.setItem('books', JSON.stringify(storedBooks));
         buildBookCards(storedBooks);
@@ -170,7 +170,6 @@ $(document).ready(function () {
       if (thisClick.hasClass("add-butt")) {
         theModal.css("display", "inline")
       } else if (thisClick.hasClass("sub-butt")) {
-        console.log(thisIndex);
         storedTV.splice(thisIndex, 1);
         localStorage.setItem('tv', JSON.stringify(storedTV));
         buildTVCards(storedTV);
@@ -277,7 +276,7 @@ $(document).ready(function () {
 
         if (response.Response === "False") { noResultsModal.css("display", "inline"); return }
         else {
-          console.log(response);
+        
 
 
           // Making the template clone 
@@ -341,7 +340,6 @@ $(document).ready(function () {
 
         if (response.Response === "False") { noResultsModal.css("display", "inline"); return }
         else {
-          console.log(response);
 
           var genreNumbers = response.results[0].genre_ids;
           var tvObj = { tvTitle: response.results[0].original_name, tvGenre: response.results[0].genre_ids, tvReviews: response.results[0].popularity, tvRating: response.results[0].vote_average, tvPlot: response.results[0].overview, tvImg: "https://image.tmdb.org/t/p/w500/" + response.results[0].poster_path }
