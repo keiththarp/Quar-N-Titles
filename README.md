@@ -15,9 +15,13 @@ OpenLibrary- Books Database
 
 The titles are stored in local storage so they will remain saved on the users device unless they would like to remove it.
 
+<img src="Assets/readme1.png">
+<img src="Assets/readme1.png">
+
 <video src ="Assets/Quarantine-Accomplishments.webm" controls width="250">
 </video>
 
+<a href="Assets/Quarantine-Accomplishments.webm">If video does not load, click here for demo</a>
 
 This application was developed by:
 
