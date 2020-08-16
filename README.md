@@ -1,4 +1,4 @@
-#Quar'N'Titles
+# Quar'N'Titles
 
 <a href="https://keiththarp.github.io/Quar-N-Titles/">View deployed app.</a>
 
