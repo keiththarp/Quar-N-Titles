@@ -22,11 +22,11 @@ The titles are stored in local storage so they will remain saved on the users de
 
 ## Quar'N'Titles was developed by:
 
-* Marc Langlois - Back-end/Team Lead
-* Keith Tharp - Front-end
-* Kayla Dunphe - Front-end
-* Warren Hunt - Back-end
-* Adrian Lambros - Back-end
+* Marc Langlois - Back-end/Team Lead - https://github.com/mlanglois333
+* Keith Tharp - Front-end - https://github.com/keiththarp
+* Kayla Dunphe - Front-end - https://github.com/kdunphe
+* Warren Hunt - Back-end - https://github.com/wmhunt1
+* Adrian Lambros - Back-end - https://github.com/lambros89
 
 Group 6, UNH Coding Bootcamp 2020
 
